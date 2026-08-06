@@ -14,7 +14,7 @@ export class SVGRenderer {
     };
   }
 
-  createSVG() {
+createSVG() {
     const svg = document.createElementNS(this.ns, "svg");
     svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
     svg.classList.add("board-svg");
@@ -25,11 +25,48 @@ export class SVGRenderer {
   createMarkerDefs() {
     return `
       <defs>
-        <marker id="arrowhead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto" markerUnits="strokeWidth">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
+        <marker id="arrowhead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto" markerUnits="strokeWidth">
+          <path d="M 0 0 L 9 5 L 0 9 z" fill="context-stroke" />
         </marker>
       </defs>
     `;
+  }
+
+  getArrowColor(direction) {
+    switch (String(direction).toUpperCase()) {
+      case "RIGHT":
+        return "#4f8cff";
+      case "LEFT":
+        return "#ff5d8f";
+      case "DOWN":
+        return "#2ec4b6";
+      case "UP":
+        return "#ffb020";
+      default:
+        return "#8b5cf6";
+    }
+  }
+
+  createGridBackground(width, height) {
+    const g = document.createElementNS(this.ns, "g");
+    g.classList.add("board-grid");
+
+    const cellSize = 80;
+    const spacing = 40;
+    const dotRadius = 2.5;
+
+    for (let x = spacing; x < width; x += spacing) {
+      for (let y = spacing; y < height; y += spacing) {
+        const circle = document.createElementNS(this.ns, "circle");
+        circle.setAttribute("cx", String(x));
+        circle.setAttribute("cy", String(y));
+        circle.setAttribute("r", String(dotRadius));
+        circle.classList.add("grid-dot");
+        g.appendChild(circle);
+      }
+    }
+
+    return g;
   }
 
   getZoomPreset() {
@@ -67,7 +104,7 @@ export class SVGRenderer {
       throw new Error("SVGRenderer.render requires a valid level object with board and paths.");
     }
 
-    this.container.innerHTML = "";
+this.container.innerHTML = "";
     const svg = this.createSVG();
     const contentGroup = document.createElementNS(this.ns, "g");
     svg.appendChild(contentGroup);
@@ -77,19 +114,24 @@ export class SVGRenderer {
       arrows.filter((arrow) => arrow.isSelected).map((arrow) => String(arrow.id))
     );
 
-    const arrowStrokeWidth = 16;
+    const arrowStrokeWidth = 22;
     const arrowPaths = level.paths.filter((item) => activeIds.has(String(item.id)));
 
+    const grid = this.createGridBackground(level.board.width, level.board.height);
+    contentGroup.appendChild(grid);
+
     arrowPaths.forEach((item) => {
+      const color = this.getArrowColor(item.direction);
       const path = document.createElementNS(this.ns, "path");
       path.setAttribute("d", item.path);
       path.setAttribute("fill", "none");
-      path.setAttribute("stroke", "currentColor");
+      path.setAttribute("stroke", color);
       path.setAttribute("stroke-width", String(arrowStrokeWidth));
       path.setAttribute("stroke-linecap", "round");
       path.setAttribute("stroke-linejoin", "round");
       path.setAttribute("marker-end", "url(#arrowhead)");
       path.setAttribute("id", `arrow-path-${item.id}`);
+      path.setAttribute("data-direction", item.direction);
       path.classList.add("board-path");
       if (selectedArrowIds.has(String(item.id))) {
         path.classList.add("selected");
@@ -221,11 +263,19 @@ export class SVGRenderer {
       return;
     }
 
-    path.classList.remove("selected", "wrong");
+path.classList.remove("selected", "wrong");
+    const direction = path.getAttribute("data-direction");
     if (state === "selected") {
       path.classList.add("selected");
+      path.setAttribute("stroke", "#ffd166");
+      path.style.filter = "drop-shadow(0 0 6px rgba(255, 209, 102, 0.8))";
     } else if (state === "wrong") {
       path.classList.add("wrong");
+      path.setAttribute("stroke", "#ff5d5d");
+      path.style.filter = "drop-shadow(0 0 6px rgba(255, 93, 93, 0.8))";
+    } else {
+      path.setAttribute("stroke", this.getArrowColor(direction));
+      path.style.filter = "";
     }
   }
 
