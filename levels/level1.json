@@ -1,0 +1,140 @@
+{
+  "id": 1,
+  "name": "Level 1",
+  "board": {
+    "width": 980,
+    "height": 1120
+  },
+  "paths": [
+    {
+      "id": "a1",
+      "path": "M80 120 H340 V200 H380",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "a2",
+      "path": "M420 90 V200 H520",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a3",
+      "path": "M580 140 H760 V220 H820",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "a4",
+      "path": "M860 100 V220 H940",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a5",
+      "path": "M380 260 H180 V340 H140",
+      "direction": "LEFT"
+    },
+    {
+      "id": "a6",
+      "path": "M420 220 V340 H520",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a7",
+      "path": "M560 260 H740 V340 H820",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "a8",
+      "path": "M860 240 V360 H940",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a9",
+      "path": "M80 420 H260 V500 H320",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "a10",
+      "path": "M380 320 V460 H460",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a11",
+      "path": "M760 380 H600 V460 H560",
+      "direction": "LEFT"
+    },
+    {
+      "id": "a12",
+      "path": "M820 360 V480 H940",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a13",
+      "path": "M120 540 H320 V620 H380",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "a14",
+      "path": "M520 600 V540 H480",
+      "direction": "UP"
+    },
+    {
+      "id": "a15",
+      "path": "M560 520 H740 V600 H820",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "a16",
+      "path": "M860 500 V640 H940",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a17",
+      "path": "M80 660 H280 V740 H340",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "a18",
+      "path": "M420 620 V760 H520",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a19",
+      "path": "M820 740 H680 V820 H640",
+      "direction": "LEFT"
+    },
+    {
+      "id": "a20",
+      "path": "M860 620 V760 H940",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a21",
+      "path": "M120 820 H340 V900 H380",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "a22",
+      "path": "M420 700 V860 H520",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a23",
+      "path": "M760 820 H580 V900 H540",
+      "direction": "LEFT"
+    },
+    {
+      "id": "a24",
+      "path": "M860 700 V860 H940",
+      "direction": "DOWN"
+    },
+    {
+      "id": "a25",
+      "path": "M80 980 H320 V1060 H380",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "a26",
+      "path": "M420 900 V1040 H520",
+      "direction": "DOWN"
+    }
+  ]
+}

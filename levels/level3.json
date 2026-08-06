@@ -1,0 +1,30 @@
+{
+  "id": 3,
+  "name": "Level 3",
+  "board": {
+    "width": 900,
+    "height": 1300
+  },
+  "paths": [
+    {
+      "id": "c1",
+      "path": "M100 80 H160 V180 H220",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "c2",
+      "path": "M240 120 V280 H320",
+      "direction": "DOWN"
+    },
+    {
+      "id": "c3",
+      "path": "M340 220 H420 V290",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "c4",
+      "path": "M460 100 V220 H520",
+      "direction": "DOWN"
+    }
+  ]
+}
