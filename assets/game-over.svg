@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180">
+  <rect x="8" y="8" width="304" height="164" rx="24"
+        fill="#ffffff" stroke="#e2e8f0" stroke-width="3"/>
+  <circle cx="160" cy="72" r="28" fill="#172942"/>
+  <path d="M150 58 L174 72 L150 86 Z" fill="#ffffff"/>
+  <text x="160" y="130"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="24"
+        font-weight="700"
+        fill="#172942">GAME OVER</text>
+</svg>

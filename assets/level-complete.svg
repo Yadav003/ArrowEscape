@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" width="360" height="220">
+  <rect x="8" y="8" width="344" height="204" rx="28"
+        fill="#ffffff" stroke="#e2e8f0" stroke-width="3"/>
+  <circle cx="180" cy="78" r="34" fill="#172942"/>
+  <path d="M180 51 L188 69 L208 71 L193 84 L197 104 L180 94 L163 104 L167 84 L152 71 L172 69 Z"
+        fill="#ffffff"/>
+  <text x="180" y="145"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="25"
+        font-weight="700"
+        fill="#172942">LEVEL COMPLETE</text>
+  <text x="180" y="178"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="15"
+        fill="#64748b">Great job!</text>
+</svg>

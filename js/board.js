@@ -10,10 +10,12 @@ export class Board {
     this.container = container;
     this.renderer = new SVGRenderer(this.container, options);
     this.currentLevel = null;
-    this.arrows = [];
     this.movementEngine = null;
     this.gameStateManager = new GameStateManager(false);
     this.animationManager = new AnimationManager();
+    this.audioManager = options.audioManager || null;
+    this.livesManager = options.livesManager || null;
+
     this.inputManager = new InputManager(this.container, {
       onArrowSelected: ({ arrow }) => {
         const analysis = this.movementEngine.analyze(arrow.id);
@@ -22,15 +24,14 @@ export class Board {
           level: this.currentLevel,
           analysis,
         });
-        this.handleArrowAnimation(arrow, analysis);
+        this.handleArrowInteraction(arrow, analysis);
       },
       onArrowDeselected: ({ arrow }) => {
-        this.renderer.render(this.currentLevel, this.gameStateManager.getActiveArrows());
+        this.renderer.clearArrowState(arrow.id);
         this.dispatchBoardEvent("ArrowDeselected", { arrow, level: this.currentLevel });
       },
     });
 
-    this.livesManager = options.livesManager || null;
     if (this.livesManager) {
       this.setupLivesListeners();
     }
@@ -44,6 +45,9 @@ export class Board {
     });
 
     this.gameStateManager.addEventListener("LevelCompleted", (event) => {
+      if (this.audioManager) {
+        this.audioManager.playLevelComplete();
+      }
       this.dispatchBoardEvent("LevelCompleted", event.detail);
       this.inputManager.setEnabled(false);
     });
@@ -60,6 +64,9 @@ export class Board {
 
   setupLivesListeners() {
     this.livesManager.addEventListener("LifeLost", (event) => {
+      if (this.audioManager) {
+        this.audioManager.playLifeLost();
+      }
       this.dispatchBoardEvent("LifeLost", event.detail);
     });
 
@@ -73,61 +80,71 @@ export class Board {
     });
   }
 
-  handleArrowAnimation(arrow, analysis) {
-    const element = this.container.querySelector(`#arrow-path-${CSS.escape(String(arrow.id))}`);
-    if (!element) {
+  handleArrowInteraction(arrow, analysis) {
+    const groupElement = this.container.querySelector(`#arrow-group-${CSS.escape(String(arrow.id))}`);
+    if (!groupElement) {
       return;
     }
 
     this.inputManager.setEnabled(false);
     const isCorrectMove = analysis.canMove;
-    this.renderer.setArrowState(arrow.id, isCorrectMove ? "selected" : "wrong");
 
-    if (!isCorrectMove && this.livesManager) {
-      this.livesManager.loseLife();
-    }
+    if (isCorrectMove) {
+      if (this.audioManager) {
+        this.audioManager.playEscape();
+      }
+      this.renderer.setArrowState(arrow.id, "selected");
 
-    const duration = isCorrectMove
-      ? this.animationManager.getDuration(analysis.travelDistance)
-      : 120;
-
-    this.dispatchBoardEvent("AnimationStarted", {
-      arrow,
-      analysis,
-      duration,
-    });
-
-    const animationPromise = isCorrectMove
-      ? this.animationManager.animateMovement(element, arrow.direction, analysis.travelDistance)
-      : this.animationManager.animateBlocked(element, arrow.direction);
-
-    animationPromise
-      .then(() => {
-        this.dispatchBoardEvent("AnimationCompleted", {
-          arrow,
-          analysis,
+      this.animationManager
+        .animateMovement(groupElement, arrow.direction, analysis.travelDistance)
+        .then(() => {
+          this.handleArrowExit(arrow, groupElement);
+        })
+        .finally(() => {
+          if (!this.livesManager || !this.livesManager.isGameOver()) {
+            this.inputManager.setEnabled(true);
+          }
         });
+    } else {
+      if (this.audioManager) {
+        this.audioManager.playBlocked();
+      }
+      this.renderer.setArrowState(arrow.id, "wrong");
 
-        if (isCorrectMove) {
-          this.handleArrowExit(arrow, element);
-        }
-      })
-      .catch(() => {
-        this.dispatchBoardEvent("AnimationCancelled", {
-          arrow,
-          analysis,
-        });
-      })
-      .finally(() => {
-        if (!isCorrectMove) {
+      if (this.livesManager) {
+        this.livesManager.loseLife();
+      }
+
+      this.animationManager
+        .animateBlocked(groupElement, arrow.direction)
+        .then(() => {
           this.renderer.clearArrowState(arrow.id);
           this.inputManager.clearSelection();
-        }
+        })
+        .finally(() => {
+          if (!this.livesManager || !this.livesManager.isGameOver()) {
+            this.inputManager.setEnabled(true);
+          }
+        });
+    }
+  }
 
-        if (!this.livesManager || !this.livesManager.isGameOver()) {
-          this.inputManager.setEnabled(true);
-        }
-      });
+  provideHint() {
+    if (!this.movementEngine) return null;
+
+    const activeArrows = this.gameStateManager.getActiveArrows();
+    const freeArrows = activeArrows.filter((a) => this.movementEngine.analyze(a.id).canMove);
+
+    if (freeArrows.length === 0) return null;
+
+    const hintArrow = freeArrows[0];
+    this.renderer.setArrowState(hintArrow.id, "hint");
+
+    window.setTimeout(() => {
+      this.renderer.clearArrowState(hintArrow.id);
+    }, 1400);
+
+    return hintArrow;
   }
 
   render(level) {
@@ -160,7 +177,6 @@ export class Board {
     if (!this.currentLevel) {
       return;
     }
-
     this.renderer.render(this.currentLevel, this.gameStateManager.getActiveArrows());
   }
 }

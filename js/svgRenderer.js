@@ -2,56 +2,79 @@ export class SVGRenderer {
   constructor(container, options = {}) {
     this.container = container;
     this.ns = "http://www.w3.org/2000/svg";
-    this.options = {
-      maxScaleMobile: typeof options.maxScaleMobile === "number" ? options.maxScaleMobile : 1.12,
-      maxScaleTablet: typeof options.maxScaleTablet === "number" ? options.maxScaleTablet : 1.02,
-      maxScaleLaptop: typeof options.maxScaleLaptop === "number" ? options.maxScaleLaptop : 0.92,
-      maxScaleDesktop: typeof options.maxScaleDesktop === "number" ? options.maxScaleDesktop : 0.82,
-      fillRatioMobile: typeof options.fillRatioMobile === "number" ? options.fillRatioMobile : 0.92,
-      fillRatioTablet: typeof options.fillRatioTablet === "number" ? options.fillRatioTablet : 0.86,
-      fillRatioLaptop: typeof options.fillRatioLaptop === "number" ? options.fillRatioLaptop : 0.78,
-      fillRatioDesktop: typeof options.fillRatioDesktop === "number" ? options.fillRatioDesktop : 0.7,
-    };
+    this.palette = [
+      "#3A86FF", // Blue
+      "#06D6A0", // Mint Green
+      "#FF006E", // Magenta / Pink
+      "#8338EC", // Purple
+      "#FB5607", // Orange
+      "#FFBE0B", // Gold / Amber
+      "#00B4D8", // Cyan
+      "#7209B7", // Deep Violet
+      "#10B981", // Emerald
+      "#EC4899", // Rose
+    ];
+    this.arrowColors = new Map();
   }
 
-createSVG() {
+  getArrowColor(arrowId, index = 0) {
+    if (this.arrowColors.has(String(arrowId))) {
+      return this.arrowColors.get(String(arrowId));
+    }
+    const color = this.palette[index % this.palette.length];
+    this.arrowColors.set(String(arrowId), color);
+    return color;
+  }
+
+  createSVG(boardWidth, boardHeight) {
     const svg = document.createElementNS(this.ns, "svg");
     svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
     svg.classList.add("board-svg");
-    svg.innerHTML = this.createMarkerDefs();
     return svg;
   }
 
-  createMarkerDefs() {
-    return `
-      <defs>
-        <marker id="arrowhead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto" markerUnits="strokeWidth">
-          <path d="M 0 0 L 9 5 L 0 9 z" fill="context-stroke" />
-        </marker>
-      </defs>
-    `;
-  }
+  createDefs(arrows) {
+    const defs = document.createElementNS(this.ns, "defs");
 
-  getArrowColor(direction) {
-    switch (String(direction).toUpperCase()) {
-      case "RIGHT":
-        return "#4f8cff";
-      case "LEFT":
-        return "#ff5d8f";
-      case "DOWN":
-        return "#2ec4b6";
-      case "UP":
-        return "#ffb020";
-      default:
-        return "#8b5cf6";
-    }
+    // Static markers for feedback states
+    defs.innerHTML = `
+      <marker id="marker-wrong" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 1 1 L 9 5 L 1 9 Z" fill="#ef4566" />
+      </marker>
+      <marker id="marker-selected" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 1 1 L 9 5 L 1 9 Z" fill="#ffd166" />
+      </marker>
+      <marker id="marker-hint" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 1 1 L 9 5 L 1 9 Z" fill="#ffb703" />
+      </marker>
+    `;
+
+    // Dynamic marker for each arrow's individual color
+    arrows.forEach((arrow, idx) => {
+      const color = this.getArrowColor(arrow.id, idx);
+      const marker = document.createElementNS(this.ns, "marker");
+      marker.setAttribute("id", `marker-${arrow.id}`);
+      marker.setAttribute("viewBox", "0 0 10 10");
+      marker.setAttribute("refX", "6");
+      marker.setAttribute("refY", "5");
+      marker.setAttribute("markerWidth", "6");
+      marker.setAttribute("markerHeight", "6");
+      marker.setAttribute("orient", "auto");
+
+      const path = document.createElementNS(this.ns, "path");
+      path.setAttribute("d", "M 1 1 L 9 5 L 1 9 Z");
+      path.setAttribute("fill", color);
+      marker.appendChild(path);
+      defs.appendChild(marker);
+    });
+
+    return defs;
   }
 
   createGridBackground(width, height) {
     const g = document.createElementNS(this.ns, "g");
     g.classList.add("board-grid");
 
-    const cellSize = 80;
     const spacing = 40;
     const dotRadius = 2.5;
 
@@ -69,212 +92,106 @@ createSVG() {
     return g;
   }
 
-  getZoomPreset() {
-    const width = window.innerWidth;
-
-    if (width < 768) {
-      return {
-        maxScale: this.options.maxScaleMobile,
-        fillRatio: this.options.fillRatioMobile,
-      };
-    }
-
-    if (width < 1024) {
-      return {
-        maxScale: this.options.maxScaleTablet,
-        fillRatio: this.options.fillRatioTablet,
-      };
-    }
-
-    if (width < 1440) {
-      return {
-        maxScale: this.options.maxScaleLaptop,
-        fillRatio: this.options.fillRatioLaptop,
-      };
-    }
-
-    return {
-      maxScale: this.options.maxScaleDesktop,
-      fillRatio: this.options.fillRatioDesktop,
-    };
-  }
-
   render(level, arrows = []) {
-    if (!level || !level.board || !Array.isArray(level.paths)) {
-      throw new Error("SVGRenderer.render requires a valid level object with board and paths.");
+    if (!level || !level.board) {
+      return;
     }
 
-this.container.innerHTML = "";
-    const svg = this.createSVG();
+    this.container.innerHTML = "";
+    const svg = this.createSVG(level.board.width, level.board.height);
+
+    const defs = this.createDefs(arrows);
+    svg.appendChild(defs);
+
     const contentGroup = document.createElementNS(this.ns, "g");
+    contentGroup.classList.add("board-content");
     svg.appendChild(contentGroup);
 
-    const activeIds = new Set(arrows.map((arrow) => String(arrow.id)));
-    const selectedArrowIds = new Set(
-      arrows.filter((arrow) => arrow.isSelected).map((arrow) => String(arrow.id))
-    );
-
-    const arrowStrokeWidth = 22;
-    const arrowPaths = level.paths.filter((item) => activeIds.has(String(item.id)));
-
+    // Background dot matrix
     const grid = this.createGridBackground(level.board.width, level.board.height);
     contentGroup.appendChild(grid);
 
-    arrowPaths.forEach((item) => {
-      const color = this.getArrowColor(item.direction);
+    const arrowStrokeWidth = 24;
+    const activeArrows = arrows.filter((a) => a.isActive && !a.isRemoved);
+
+    activeArrows.forEach((arrow, idx) => {
+      const color = this.getArrowColor(arrow.id, idx);
+
+      const group = document.createElementNS(this.ns, "g");
+      group.setAttribute("id", `arrow-group-${arrow.id}`);
+      group.classList.add("arrow-item");
+      group.dataset.arrowId = arrow.id;
+
       const path = document.createElementNS(this.ns, "path");
-      path.setAttribute("d", item.path);
+      path.setAttribute("d", arrow.path);
       path.setAttribute("fill", "none");
       path.setAttribute("stroke", color);
       path.setAttribute("stroke-width", String(arrowStrokeWidth));
       path.setAttribute("stroke-linecap", "round");
       path.setAttribute("stroke-linejoin", "round");
-      path.setAttribute("marker-end", "url(#arrowhead)");
-      path.setAttribute("id", `arrow-path-${item.id}`);
-      path.setAttribute("data-direction", item.direction);
+      path.setAttribute("marker-end", `url(#marker-${arrow.id})`);
+      path.setAttribute("id", `arrow-path-${arrow.id}`);
+      path.setAttribute("data-direction", arrow.direction);
       path.classList.add("board-path");
-      if (selectedArrowIds.has(String(item.id))) {
-        path.classList.add("selected");
-      }
-      path.dataset.arrowId = item.id;
-      contentGroup.appendChild(path);
+      path.dataset.arrowId = arrow.id;
+
+      // Invisible wider hit area for easy touch/mouse tapping
+      const hitArea = document.createElementNS(this.ns, "path");
+      hitArea.setAttribute("d", arrow.path);
+      hitArea.setAttribute("fill", "none");
+      hitArea.setAttribute("stroke", "transparent");
+      hitArea.setAttribute("stroke-width", String(arrowStrokeWidth + 24));
+      hitArea.setAttribute("stroke-linecap", "round");
+      hitArea.setAttribute("stroke-linejoin", "round");
+      hitArea.classList.add("hit-path");
+      hitArea.dataset.arrowId = arrow.id;
+
+      group.appendChild(hitArea);
+      group.appendChild(path);
+      contentGroup.appendChild(group);
     });
 
     this.container.appendChild(svg);
-
     this.svgRoot = svg;
     this.contentGroup = contentGroup;
-    this.currentlySelectedArrowId = null;
 
-    const bounds = this.calculatePathsBoundingBox(arrowPaths);
-    const contentWidth = bounds.maxX - bounds.minX || level.board.width || 1;
-    const contentHeight = bounds.maxY - bounds.minY || level.board.height || 1;
-    const contentX = Number.isFinite(bounds.minX) ? bounds.minX : 0;
-    const contentY = Number.isFinite(bounds.minY) ? bounds.minY : 0;
+    // Calculate viewbox to fit board neatly
+    const padding = 36;
+    const vbWidth = level.board.width + padding * 2;
+    const vbHeight = level.board.height + padding * 2;
+    const vbX = -padding;
+    const vbY = -padding;
 
-    const padding = 28;
-    const paddedWidth = contentWidth + padding * 2;
-    const paddedHeight = contentHeight + padding * 2;
-    const centerX = contentX + contentWidth / 2;
-    const centerY = contentY + contentHeight / 2;
-
-    let viewBoxWidth = paddedWidth;
-    let viewBoxHeight = paddedHeight;
-    let viewBoxX = centerX - viewBoxWidth / 2;
-    let viewBoxY = centerY - viewBoxHeight / 2;
-
-    const containerRect = this.container.getBoundingClientRect();
-    if (containerRect.width > 0 && containerRect.height > 0) {
-      const preset = this.getZoomPreset();
-      const effectiveWidth = containerRect.width * preset.fillRatio;
-      const effectiveHeight = containerRect.height * preset.fillRatio;
-      const scaleX = effectiveWidth / paddedWidth;
-      const scaleY = effectiveHeight / paddedHeight;
-      const fitScale = Math.min(scaleX, scaleY);
-      const finalScale = Math.min(fitScale, preset.maxScale);
-
-      if (Number.isFinite(finalScale) && finalScale > 0) {
-        viewBoxWidth = containerRect.width / finalScale;
-        viewBoxHeight = containerRect.height / finalScale;
-        viewBoxX = centerX - viewBoxWidth / 2;
-        viewBoxY = centerY - viewBoxHeight / 2;
-      }
-    }
-
-    svg.setAttribute("viewBox", `${viewBoxX} ${viewBoxY} ${viewBoxWidth} ${viewBoxHeight}`);
-  }
-
-  calculatePathsBoundingBox(paths) {
-    const bounds = {
-      minX: Infinity,
-      minY: Infinity,
-      maxX: -Infinity,
-      maxY: -Infinity,
-    };
-
-    paths.forEach((item) => {
-      const points = this.getPathPoints(item.path);
-      points.forEach((point) => {
-        bounds.minX = Math.min(bounds.minX, point.x);
-        bounds.minY = Math.min(bounds.minY, point.y);
-        bounds.maxX = Math.max(bounds.maxX, point.x);
-        bounds.maxY = Math.max(bounds.maxY, point.y);
-      });
-    });
-
-    if (bounds.minX === Infinity) {
-      bounds.minX = 0;
-      bounds.minY = 0;
-      bounds.maxX = 0;
-      bounds.maxY = 0;
-    }
-
-    return bounds;
-  }
-
-  getPathPoints(path) {
-    const commands = path.match(/[a-zA-Z][^a-zA-Z]*/g) || [];
-    let currentX = 0;
-    let currentY = 0;
-    const points = [];
-
-    for (const token of commands) {
-      const command = token[0].toUpperCase();
-      const args = token
-        .slice(1)
-        .trim()
-        .split(/[ ,]+/)
-        .filter(Boolean)
-        .map(Number);
-
-      if (command === "M" || command === "L") {
-        for (let i = 0; i + 1 < args.length; i += 2) {
-          currentX = args[i];
-          currentY = args[i + 1];
-          points.push({ x: currentX, y: currentY });
-        }
-      } else if (command === "H") {
-        args.forEach((x) => {
-          currentX = x;
-          points.push({ x: currentX, y: currentY });
-        });
-      } else if (command === "V") {
-        args.forEach((y) => {
-          currentY = y;
-          points.push({ x: currentX, y: currentY });
-        });
-      }
-    }
-
-    if (!points.length) {
-      points.push({ x: currentX, y: currentY });
-    }
-
-    return points;
+    svg.setAttribute("viewBox", `${vbX} ${vbY} ${vbWidth} ${vbHeight}`);
   }
 
   setArrowState(arrowId, state) {
-    if (!this.svgRoot) {
-      return;
-    }
+    if (!this.svgRoot) return;
 
     const path = this.svgRoot.querySelector(`#arrow-path-${CSS.escape(String(arrowId))}`);
-    if (!path) {
-      return;
-    }
+    if (!path) return;
 
-path.classList.remove("selected", "wrong");
-    const direction = path.getAttribute("data-direction");
+    path.classList.remove("selected", "wrong", "hint-active");
+
     if (state === "selected") {
       path.classList.add("selected");
       path.setAttribute("stroke", "#ffd166");
-      path.style.filter = "drop-shadow(0 0 6px rgba(255, 209, 102, 0.8))";
+      path.setAttribute("marker-end", "url(#marker-selected)");
+      path.style.filter = "drop-shadow(0 0 10px rgba(255, 209, 102, 0.9))";
     } else if (state === "wrong") {
       path.classList.add("wrong");
-      path.setAttribute("stroke", "#ff5d5d");
-      path.style.filter = "drop-shadow(0 0 6px rgba(255, 93, 93, 0.8))";
+      path.setAttribute("stroke", "#ef4566");
+      path.setAttribute("marker-end", "url(#marker-wrong)");
+      path.style.filter = "drop-shadow(0 0 10px rgba(239, 69, 102, 0.9))";
+    } else if (state === "hint") {
+      path.classList.add("hint-active");
+      path.setAttribute("stroke", "#ffb703");
+      path.setAttribute("marker-end", "url(#marker-hint)");
+      path.style.filter = "drop-shadow(0 0 12px rgba(255, 183, 3, 0.95))";
     } else {
-      path.setAttribute("stroke", this.getArrowColor(direction));
+      const origColor = this.arrowColors.get(String(arrowId)) || "#3A86FF";
+      path.setAttribute("stroke", origColor);
+      path.setAttribute("marker-end", `url(#marker-${arrowId})`);
       path.style.filter = "";
     }
   }

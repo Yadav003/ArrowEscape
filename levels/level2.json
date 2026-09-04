@@ -1,25 +1,30 @@
 {
   "id": 2,
-  "name": "Level 2",
+  "name": "Level 2 - Clear the Path",
   "board": {
-    "width": 800,
-    "height": 1200
+    "width": 700,
+    "height": 700
   },
   "paths": [
     {
       "id": "b1",
-      "path": "M120 60 H240 V160 H180",
-      "direction": "RIGHT"
-    },
-    {
-      "id": "b2",
-      "path": "M260 220 V340 H340",
+      "path": "M 180 180 H 300 V 450",
       "direction": "DOWN"
     },
     {
+      "id": "b2",
+      "path": "M 520 320 H 380",
+      "direction": "LEFT"
+    },
+    {
       "id": "b3",
-      "path": "M420 100 H520 V190",
-      "direction": "RIGHT"
+      "path": "M 520 180 V 260 H 380",
+      "direction": "LEFT"
+    },
+    {
+      "id": "b4",
+      "path": "M 180 480 H 320 V 580",
+      "direction": "DOWN"
     }
   ]
 }

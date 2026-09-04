@@ -6,20 +6,13 @@ export class AnimationManager {
   }
 
   animateMovement(element, direction, distance) {
-    if (this.isAnimating) {
-      return Promise.reject(new Error("Animation already running."));
-    }
-
     if (!element || distance <= 0) {
       return Promise.resolve();
     }
 
-    const pathLength = element.getTotalLength();
-    const startPoint = element.getPointAtLength(0);
-    const endPoint = element.getPointAtLength(pathLength);
     const directionVector = this.getDirectionUnit(direction);
-    const totalTravel = pathLength + distance;
-    const duration = this.getDuration(totalTravel);
+    const totalTravel = Math.max(distance, 500);
+    const duration = 320; // Snappy, dynamic escape
     const from = this.getCurrentTranslation(element);
 
     this.isAnimating = true;
@@ -36,23 +29,17 @@ export class AnimationManager {
 
         const elapsed = timestamp - start;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = this.easeOutCubic(progress);
+        // Ease-in acceleration: starts moving, then zooms off screen
+        const eased = Math.pow(progress, 1.8);
         const traveled = totalTravel * eased;
-        const pathDistance = Math.min(traveled, pathLength);
-        const extraDistance = Math.max(0, traveled - pathLength);
-        const currentPoint = pathDistance <= pathLength
-          ? element.getPointAtLength(pathDistance)
-          : endPoint;
-        const target = {
-          x: currentPoint.x + directionVector.x * extraDistance,
-          y: currentPoint.y + directionVector.y * extraDistance,
-        };
+
         const translation = {
-          x: from.x + (target.x - startPoint.x),
-          y: from.y + (target.y - startPoint.y),
+          x: from.x + directionVector.x * traveled,
+          y: from.y + directionVector.y * traveled,
         };
 
         this.applyTranslation(element, translation);
+        element.style.opacity = String(Math.max(0, 1 - progress * 0.8));
 
         if (progress < 1) {
           this.frameId = requestAnimationFrame(step);
@@ -72,20 +59,17 @@ export class AnimationManager {
   }
 
   animateBlocked(element, direction) {
-    if (this.isAnimating) {
-      return Promise.reject(new Error("Animation already running."));
-    }
-
     if (!element) {
       return Promise.resolve();
     }
 
-    this.isAnimating = true;
-    this.cancelRequested = false;
-    const duration = 120;
+    const duration = 180;
     const start = performance.now();
     const from = this.getCurrentTranslation(element);
-    const shift = this.getBlockedShift(direction, 5);
+    const shift = this.getBlockedShift(direction, 14);
+
+    this.isAnimating = true;
+    this.cancelRequested = false;
 
     return new Promise((resolve, reject) => {
       const step = (timestamp) => {
@@ -97,13 +81,12 @@ export class AnimationManager {
 
         const elapsed = timestamp - start;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = progress < 0.5
-          ? this.easeOutQuad(progress * 2)
-          : 1 - this.easeOutQuad((progress - 0.5) * 2);
+        // Elastic rebound curve: out to obstacle, bounce back with spring
+        const factor = Math.sin(progress * Math.PI * 1.5) * Math.exp(-progress * 2.5);
 
         this.applyTranslation(element, {
-          x: from.x + shift.x * eased,
-          y: from.y + shift.y * eased,
+          x: from.x + shift.x * factor,
+          y: from.y + shift.y * factor,
         });
 
         if (progress < 1) {
@@ -123,21 +106,6 @@ export class AnimationManager {
     });
   }
 
-  cancel() {
-    if (!this.isAnimating) {
-      return;
-    }
-
-    this.cancelRequested = true;
-  }
-
-  getDuration(distance) {
-    const min = 250;
-    const max = 450;
-    const scaled = min + Math.min(1, distance / 200) * (max - min);
-    return Math.round(scaled);
-  }
-
   getDirectionUnit(direction) {
     switch (String(direction).toUpperCase()) {
       case "RIGHT":
@@ -149,23 +117,13 @@ export class AnimationManager {
       case "UP":
         return { x: 0, y: -1 };
       default:
-        return { x: 0, y: 0 };
+        return { x: 1, y: 0 };
     }
   }
 
   getBlockedShift(direction, amount) {
-    switch (String(direction).toUpperCase()) {
-      case "RIGHT":
-        return { x: amount, y: 0 };
-      case "LEFT":
-        return { x: -amount, y: 0 };
-      case "DOWN":
-        return { x: 0, y: amount };
-      case "UP":
-        return { x: 0, y: -amount };
-      default:
-        return { x: 0, y: 0 };
-    }
+    const unit = this.getDirectionUnit(direction);
+    return { x: unit.x * amount, y: unit.y * amount };
   }
 
   getCurrentTranslation(element) {
@@ -190,13 +148,5 @@ export class AnimationManager {
       cancelAnimationFrame(this.frameId);
       this.frameId = null;
     }
-  }
-
-  easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
-  }
-
-  easeOutQuad(t) {
-    return 1 - (1 - t) * (1 - t);
   }
 }

@@ -4,60 +4,90 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Arrow Escape</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body data-theme="light">
   <div class="app-shell">
     <header class="top-bar">
-      <button class="control-button" id="backButton" type="button" aria-label="Go back">
-        <span class="control-icon">←</span>
-      </button>
-
-<div class="heart-row" aria-label="Lives remaining">
-        <span class="heart">❤</span>
-        <span class="heart">❤</span>
-        <span class="heart">❤</span>
+      <div class="top-bar-left">
+        <button class="control-button" id="backButton" type="button" aria-label="Previous Level" title="Previous Level">
+          <img src="assets/icon-back.svg" alt="Back" class="icon-svg" />
+        </button>
+        <button class="control-button" id="soundButton" type="button" aria-label="Toggle Sound" title="Toggle Sound">
+          <img id="soundIcon" src="assets/sound-on.svg" alt="Sound" class="icon-svg" />
+        </button>
       </div>
 
-      <div class="level-badge" id="levelBadge" aria-label="Current level">Level 1</div>
+      <div class="top-bar-center">
+        <div class="level-badge" id="levelBadge" aria-label="Current level">Level 1</div>
+        <div class="heart-row" id="heartRow" aria-label="Lives remaining">
+          <span class="heart active"><img src="assets/heart-full.svg" alt="Life" class="heart-icon" /></span>
+          <span class="heart active"><img src="assets/heart-full.svg" alt="Life" class="heart-icon" /></span>
+          <span class="heart active"><img src="assets/heart-full.svg" alt="Life" class="heart-icon" /></span>
+        </div>
+      </div>
 
-      <button class="control-button" id="restartButton" type="button" aria-label="Restart level">
-        <span class="control-icon">↻</span>
-      </button>
+      <div class="top-bar-right">
+        <button class="control-button" id="themeButton" type="button" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <img id="themeIcon" src="assets/theme-moon.svg" alt="Theme" class="icon-svg" />
+        </button>
+        <button class="control-button" id="restartButton" type="button" aria-label="Restart Level" title="Restart Level">
+          <img src="assets/icon-restart.svg" alt="Restart" class="icon-svg" />
+        </button>
+      </div>
     </header>
 
-<main class="game-shell">
+    <main class="game-shell">
       <div class="board-shell">
         <div id="svgContainer" class="svg-container"></div>
         <div id="gameMessage" class="game-message" role="status" aria-live="polite"></div>
+
+        <!-- Floating Hint Button -->
+        <button class="hint-button" id="hintButton" type="button" aria-label="Get Hint" title="Get Hint">
+          <img src="assets/hint.svg" alt="Hint" class="hint-icon" />
+          <span class="hint-badge" id="hintBadge">3</span>
+        </button>
       </div>
     </main>
+
+    <footer class="bottom-banner">
+      <div class="brand-title">
+        <span class="banner-arrow">←</span>
+        <span>Arrows Escape</span>
+        <span class="banner-arrow">→</span>
+      </div>
+    </footer>
   </div>
 
-<div id="gameOverOverlay" class="game-over-overlay hidden" aria-hidden="true">
+  <!-- Game Over Modal -->
+  <div id="gameOverOverlay" class="game-over-overlay hidden" aria-hidden="true">
     <div class="game-over-backdrop"></div>
     <div class="game-over-panel" role="dialog" aria-modal="true" aria-labelledby="gameOverTitle">
-      <h2 id="gameOverTitle">Game Over</h2>
-      <p>You've lost all your hearts. Retry the level or exit to level select.</p>
+      <div class="modal-icon-badge danger">💔</div>
+      <h2 id="gameOverTitle">Out of Lives!</h2>
+      <p>Watch out for blocking arrows! Every blocked arrow costs one heart.</p>
       <div class="game-over-actions">
-        <button id="retryOverlayButton" class="control-button" type="button">Retry Level</button>
-        <button id="exitOverlayButton" class="control-button exit" type="button">Exit</button>
+        <button id="retryOverlayButton" class="modal-button primary" type="button">Try Again</button>
       </div>
     </div>
   </div>
 
+  <!-- Level Complete Modal -->
   <div id="levelCompleteOverlay" class="game-over-overlay hidden" aria-hidden="true">
     <div class="game-over-backdrop"></div>
     <div class="game-over-panel" role="dialog" aria-modal="true" aria-labelledby="levelCompleteTitle">
-      <h2 id="levelCompleteTitle">🎉 Level Complete!</h2>
-      <p>Great job clearing the maze! Ready for the next challenge?</p>
+      <div class="modal-icon-badge success">🎉</div>
+      <h2 id="levelCompleteTitle">Level Complete!</h2>
+      <p>Awesome work! All arrows escaped the maze.</p>
       <div class="game-over-actions">
-        <button id="nextLevelButton" class="control-button" type="button">Next Level</button>
-        <button id="levelSelectButton" class="control-button exit" type="button">Level Select</button>
+        <button id="nextLevelButton" class="modal-button primary" type="button">Next Level →</button>
       </div>
     </div>
   </div>
 
-  <script type="module" src="game.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>

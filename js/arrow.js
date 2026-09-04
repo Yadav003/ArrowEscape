@@ -1,18 +1,48 @@
 export class Arrow {
-  constructor({ id, direction, path, metadata = null }) {
+  constructor({ id, direction = null, path = "", metadata = null }) {
     if (id == null) {
       throw new Error("Arrow requires a valid id.");
     }
 
     this.id = String(id);
-    this.direction = typeof direction === "string" ? direction.toUpperCase() : "UNKNOWN";
-    this.path = String(path || "");
+    this.path = String(path || "").trim();
     this.metadata = metadata;
     this.isSelected = false;
     this.isActive = true;
     this.isRemoved = false;
     this.isMoving = false;
+    this.isBlocked = false;
+
+    this._pathPoints = null;
+    this._segments = null;
     this._boundingBox = null;
+    this._pathLength = null;
+
+    // Geometric derivation
+    this.points = this.getPathPoints();
+    this.headPoint = this.getPathEndPoint();
+    this.direction = this.determineDirection(direction);
+  }
+
+  determineDirection(fallbackDirection) {
+    if (this.points.length >= 2) {
+      const p1 = this.points[this.points.length - 2];
+      const p2 = this.points[this.points.length - 1];
+      const dx = p2.x - p1.x;
+      const dy = p2.y - p1.y;
+
+      if (Math.abs(dx) > Math.abs(dy)) {
+        return dx > 0 ? "RIGHT" : "LEFT";
+      } else if (Math.abs(dy) > 0) {
+        return dy > 0 ? "DOWN" : "UP";
+      }
+    }
+
+    if (typeof fallbackDirection === "string" && fallbackDirection.trim()) {
+      return fallbackDirection.trim().toUpperCase();
+    }
+
+    return "RIGHT";
   }
 
   select() {
@@ -29,9 +59,42 @@ export class Arrow {
     if (this._pathPoints) {
       return this._pathPoints;
     }
-
     this._pathPoints = Arrow.parseSvgPath(this.path);
     return this._pathPoints;
+  }
+
+  getSegments() {
+    if (this._segments) {
+      return this._segments;
+    }
+
+    const points = this.getPathPoints();
+    const segments = [];
+
+    for (let i = 0; i < points.length - 1; i++) {
+      const p1 = points[i];
+      const p2 = points[i + 1];
+      const minX = Math.min(p1.x, p2.x);
+      const maxX = Math.max(p1.x, p2.x);
+      const minY = Math.min(p1.y, p2.y);
+      const maxY = Math.max(p1.y, p2.y);
+      const isHorizontal = Math.abs(p1.y - p2.y) < 0.5;
+      const isVertical = Math.abs(p1.x - p2.x) < 0.5;
+
+      segments.push({
+        p1,
+        p2,
+        minX,
+        maxX,
+        minY,
+        maxY,
+        isHorizontal,
+        isVertical,
+      });
+    }
+
+    this._segments = segments;
+    return this._segments;
   }
 
   getPathLength() {
@@ -57,14 +120,19 @@ export class Arrow {
     return points.length ? points[points.length - 1] : { x: 0, y: 0 };
   }
 
+  getPathStartPoint() {
+    const points = this.getPathPoints();
+    return points.length ? points[0] : { x: 0, y: 0 };
+  }
+
   getBoundingBox() {
     if (this._boundingBox) {
       return this._boundingBox;
     }
 
-    const points = Arrow.parseSvgPath(this.path);
-    const xs = points.map((point) => point.x);
-    const ys = points.map((point) => point.y);
+    const points = this.getPathPoints();
+    const xs = points.map((p) => p.x);
+    const ys = points.map((p) => p.y);
     const minX = Math.min(...xs);
     const maxX = Math.max(...xs);
     const minY = Math.min(...ys);
@@ -109,8 +177,6 @@ export class Arrow {
           currentY = y;
           points.push({ x: currentX, y: currentY });
         }
-      } else if (command === "Z") {
-        // Close path - ignore for bounding box calculations
       }
     }
 

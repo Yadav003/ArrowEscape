@@ -1,30 +1,50 @@
 {
   "id": 3,
-  "name": "Level 3",
+  "name": "Level 3 - Corner Escape",
   "board": {
-    "width": 900,
-    "height": 1300
+    "width": 800,
+    "height": 800
   },
   "paths": [
     {
       "id": "c1",
-      "path": "M100 80 H160 V180 H220",
+      "path": "M 200 160 H 350 V 240 H 650",
       "direction": "RIGHT"
     },
     {
       "id": "c2",
-      "path": "M240 120 V280 H320",
-      "direction": "DOWN"
+      "path": "M 400 120 V 200 H 280",
+      "direction": "LEFT"
     },
     {
       "id": "c3",
-      "path": "M340 220 H420 V290",
+      "path": "M 200 320 V 440 H 340",
       "direction": "RIGHT"
     },
     {
       "id": "c4",
-      "path": "M460 100 V220 H520",
+      "path": "M 500 280 V 480",
       "direction": "DOWN"
+    },
+    {
+      "id": "c5",
+      "path": "M 650 380 H 450",
+      "direction": "LEFT"
+    },
+    {
+      "id": "c6",
+      "path": "M 240 540 H 440 V 660",
+      "direction": "DOWN"
+    },
+    {
+      "id": "c7",
+      "path": "M 560 540 V 640 H 700",
+      "direction": "RIGHT"
+    },
+    {
+      "id": "c8",
+      "path": "M 350 720 H 150",
+      "direction": "LEFT"
     }
   ]
 }
