@@ -13,90 +13,140 @@
   const EMBEDDED_LEVELS = {
     1: {
       id: 1,
-      name: "Level 1 - Introduction",
-      board: { width: 600, height: 600 },
+      name: "Level 1 - Classic Loop",
+      board: { width: 500, height: 600 },
       paths: [
-        { id: "a1", path: "M 160 200 H 420" },
-        { id: "a2", path: "M 440 180 V 380" },
-        { id: "a3", path: "M 160 400 H 440 V 460 H 520" }
+        { id: "yellow", path: "M 80 480 V 540 H 420 V 70 H 260 V 380 H 220 V 60", color: "#FFB703" },
+        { id: "orange", path: "M 320 440 V 160", color: "#FB8500" },
+        { id: "green",  path: "M 170 200 V 340 H 130 V 160 H 180", color: "#52B788" },
+        { id: "cyan",   path: "M 170 420 H 250 V 460 H 360 V 180 H 340 V 140 H 370", color: "#2EC4B6" },
+        { id: "purple", path: "M 160 120 H 90 V 420 H 130 V 480 H 250", color: "#9D4EDD" }
       ]
     },
     2: {
       id: 2,
       name: "Level 2 - The Swirl",
-      board: { width: 600, height: 600 },
+      board: { width: 600, height: 620 },
       paths: [
-        { id: "b1", path: "M 160 160 H 420 V 260" },
-        { id: "b2", path: "M 460 220 V 440 H 520" },
-        { id: "b3", path: "M 400 420 H 220 V 300" },
-        { id: "b4", path: "M 180 340 H 260 V 500" }
+        { id: "top_cyan_u", path: "M 480 180 V 70 H 530 V 140", color: "#00B4D8" },
+        { id: "bot_cyan_v", path: "M 150 480 V 550", color: "#00B4D8" },
+        { id: "top_purple", path: "M 220 80 H 70 V 210", color: "#8338EC" },
+        { id: "green_u1",   path: "M 110 210 H 190 V 170 H 130", color: "#06D6A0" },
+        { id: "orange_top", path: "M 120 130 H 420 V 70 H 460 V 170 H 330", color: "#FB5607" },
+        { id: "yellow_mid", path: "M 380 210 H 330", color: "#FFBE0B" },
+        { id: "pink_mid",   path: "M 240 180 H 270 V 250 H 420 V 220 H 530 V 250", color: "#FF006E" },
+        { id: "cyan_mid",   path: "M 530 410 V 290 H 260 V 330 H 480", color: "#00B4D8" },
+        { id: "purple_v",   path: "M 200 370 V 240", color: "#8338EC" },
+        { id: "orange_l",   path: "M 70 340 V 520 H 110 V 260 H 140 V 340", color: "#FB5607" },
+        { id: "yellow_bot", path: "M 70 560 H 200 V 440 H 240 V 470", color: "#FFBE0B" },
+        { id: "orange_s1",  path: "M 250 500 H 340", color: "#FB5607" },
+        { id: "yellow_u",   path: "M 530 520 H 430 V 480 H 540", color: "#FFBE0B" },
+        { id: "green_bot",  path: "M 530 560 H 250 V 530 H 380", color: "#06D6A0" },
+        { id: "purple_mid", path: "M 500 390 H 360 V 440 H 480 V 420 H 380 V 370 H 460", color: "#8338EC" },
+        { id: "pink_hook",  path: "M 250 370 H 280 V 410", color: "#FF006E" }
       ]
     },
     3: {
       id: 3,
-      name: "Level 3 - Snake Tracks",
-      board: { width: 600, height: 600 },
+      name: "Level 3 - Labyrinth Maze",
+      board: { width: 600, height: 640 },
       paths: [
-        { id: "c1", path: "M 140 140 H 420 V 220 H 520" },
-        { id: "c2", path: "M 200 200 V 340 H 320" },
-        { id: "c3", path: "M 440 180 V 380 H 380" },
-        { id: "c4", path: "M 140 400 H 340 V 480 H 520" },
-        { id: "c5", path: "M 460 360 V 520" },
-        { id: "c6", path: "M 240 540 H 120" }
+        { id: "top_bar_left", path: "M 200 110 H 50", color: "#4A5568" },
+        { id: "top_border_hook", path: "M 50 60 H 260 V 110 H 210", color: "#4A5568" },
+        { id: "top_exit_up", path: "M 220 200 V 230 H 260 V 150 H 350 V 100 H 310 V 40", color: "#4A5568" },
+        { id: "top_right_hook", path: "M 360 60 H 550 V 110 H 460", color: "#4A5568" },
+        { id: "upper_right_down", path: "M 410 140 V 180 H 440 V 220", color: "#4A5568" },
+        { id: "right_top_hook", path: "M 510 220 V 150 H 550 V 240", color: "#4A5568" },
+        { id: "right_col_up", path: "M 510 320 H 460 V 160", color: "#4A5568" },
+        { id: "u_turn_mid", path: "M 310 260 V 200 H 360 V 250", color: "#4A5568" },
+        { id: "left_col_up", path: "M 50 250 V 130", color: "#4A5568" },
+        { id: "left_inner_corner", path: "M 180 160 H 100 V 290 H 150", color: "#4A5568" },
+        { id: "left_small_hook", path: "M 190 290 V 240 H 140 V 210 H 190", color: "#4A5568" },
+        { id: "vert_mid_left_up", path: "M 220 360 V 250", color: "#4A5568" },
+        { id: "red_arrow", path: "M 400 400 V 370 H 260 V 240", color: "#E63946" },
+        { id: "green_arrow", path: "M 440 230 V 330 H 300", color: "#2A9D8F" },
+        { id: "left_mid_bar", path: "M 170 340 H 90", color: "#4A5568" },
+        { id: "left_col_mid_up", path: "M 50 460 V 320", color: "#4A5568" },
+        { id: "step_below_red", path: "M 370 410 H 220 V 460", color: "#4A5568" },
+        { id: "bot_mid_left", path: "M 390 450 H 220", color: "#4A5568" },
+        { id: "bot_right_snake", path: "M 440 490 H 310 V 530 H 400", color: "#4A5568" },
+        { id: "bot_right_v1", path: "M 450 370 V 550", color: "#4A5568" },
+        { id: "bot_right_v2", path: "M 490 580 V 390", color: "#4A5568" },
+        { id: "bot_right_v3", path: "M 530 360 V 590", color: "#4A5568" },
+        { id: "bot_left_loop", path: "M 100 480 V 400 H 180 V 540 H 350 V 580 H 420", color: "#4A5568" },
+        { id: "bot_left_up", path: "M 50 580 V 480", color: "#4A5568" },
+        { id: "bot_left_exit", path: "M 270 580 H 90", color: "#4A5568" }
       ]
     },
     4: {
       id: 4,
-      name: "Level 4 - Interlocked Maze",
-      board: { width: 650, height: 650 },
+      name: "Level 4 - Heart Maze",
+      board: { width: 680, height: 680 },
       paths: [
-        { id: "d1", path: "M 120 120 H 480 V 180 H 560" },
-        { id: "d2", path: "M 200 160 V 280 H 360" },
-        { id: "d3", path: "M 440 160 V 320 H 540" },
-        { id: "d4", path: "M 120 320 H 260 V 420" },
-        { id: "d5", path: "M 320 260 V 420 H 440" },
-        { id: "d6", path: "M 480 280 V 480 H 560" },
-        { id: "d7", path: "M 160 460 H 380 V 540 H 540" },
-        { id: "d8", path: "M 280 500 V 580" }
+        { id: "h1", path: "M 110 240 V 140 H 170 V 210", color: "#06D6A0" },
+        { id: "h2", path: "M 170 140 H 260 V 110 H 190", color: "#8338EC" },
+        { id: "h3", path: "M 140 270 V 180 H 320 V 220 H 190", color: "#00B4D8" },
+        { id: "h4", path: "M 480 110 H 550", color: "#FB5607" },
+        { id: "h5", path: "M 360 210 V 140 H 590", color: "#00B4D8" },
+        { id: "h6", path: "M 530 160 H 600 V 220", color: "#06D6A0" },
+        { id: "h7", path: "M 460 250 V 160 H 570 V 210 H 470", color: "#06D6A0" },
+        { id: "h8", path: "M 160 290 H 240 V 320 H 170", color: "#FB5607" },
+        { id: "h9", path: "M 270 290 H 570", color: "#FF006E" },
+        { id: "h10", path: "M 150 360 H 620 V 330 H 480", color: "#00B4D8" },
+        { id: "h11", path: "M 180 400 H 580", color: "#FFBE0B" },
+        { id: "h12", path: "M 140 440 H 620 V 410 H 220", color: "#06D6A0" },
+        { id: "h13", path: "M 480 440 H 580", color: "#FFBE0B" },
+        { id: "h14", path: "M 120 450 V 200 H 330 V 270 H 420", color: "#00B4D8" },
+        { id: "h15", path: "M 150 480 H 410 V 510 H 350", color: "#FFBE0B" },
+        { id: "h16", path: "M 210 540 V 490 H 300 V 560 H 370", color: "#06D6A0" },
+        { id: "h17", path: "M 230 570 V 510 H 260 V 560", color: "#FF006E" },
+        { id: "h18", path: "M 400 590 V 520 H 470", color: "#FB5607" },
+        { id: "h19", path: "M 440 600 V 500 H 470 V 570 H 500", color: "#8338EC" },
+        { id: "h20", path: "M 520 570 V 520 H 550", color: "#FFBE0B" },
+        { id: "h21", path: "M 410 630 H 370 V 580 H 440 V 610", color: "#FF006E" }
       ]
     },
     5: {
       id: 5,
       name: "Level 5 - Snake Labyrinth",
-      board: { width: 650, height: 650 },
+      board: { width: 520, height: 600 },
       paths: [
-        { id: "e1", path: "M 240 520 V 460 H 420 V 420 H 560" },
-        { id: "e2", path: "M 480 520 H 360 V 480 H 120" },
-        { id: "e3", path: "M 140 440 H 280 V 360" },
-        { id: "e4", path: "M 440 380 H 320 V 300 H 560" },
-        { id: "e5", path: "M 520 220 V 360 H 480 V 440 H 560" },
-        { id: "e6", path: "M 400 120 H 520 V 180" },
-        { id: "e7", path: "M 200 120 H 340 V 220 H 440" },
-        { id: "e8", path: "M 120 160 H 180 V 280 H 100" },
-        { id: "e9", path: "M 260 200 V 320 H 180" },
-        { id: "e10", path: "M 360 200 V 260 H 280" },
-        { id: "e11", path: "M 300 380 V 140 H 220 V 80" }
+        { id: "u_cyan",         path: "M 120 80 V 140 H 80 V 70", color: "#00B4D8" },
+        { id: "yellow_left_v",  path: "M 80 540 V 180 H 120 V 210", color: "#FFBE0B" },
+        { id: "pink_left_u",    path: "M 160 480 V 240 H 120 V 480", color: "#FF006E" },
+        { id: "orange_top_s",   path: "M 220 170 V 110 H 300 V 75 H 155 V 190 H 190 V 235", color: "#FB5607" },
+        { id: "pink_center_h",  path: "M 340 135 H 260 V 260 H 225 V 225", color: "#FF006E" },
+        { id: "purple_top_box", path: "M 340 105 H 375 V 135 H 300 V 265 H 410 V 75 H 325", color: "#8338EC" },
+        { id: "green_inner_c",  path: "M 370 200 H 330 V 230 H 360", color: "#06D6A0" },
+        { id: "yellow_mid_bar", path: "M 190 340 V 285 H 420", color: "#FFBE0B" },
+        { id: "yellow_s_curve", path: "M 260 320 H 225 V 355 H 195 V 340 H 260", color: "#FFBE0B" },
+        { id: "orange_mid_s",   path: "M 390 380 H 300 V 345 H 380", color: "#FB5607" },
+        { id: "cyan_corner",    path: "M 265 350 V 380 H 180", color: "#00B4D8" },
+        { id: "purple_bot_u",   path: "M 410 420 H 300 V 385 H 345", color: "#8338EC" },
+        { id: "green_bot_u",    path: "M 410 450 H 120 V 415 H 270", color: "#06D6A0" }
       ]
     },
     6: {
       id: 6,
-      name: "Level 6 - Master Challenge",
-      board: { width: 680, height: 680 },
+      name: "Level 6 - Box & Serpents",
+      board: { width: 500, height: 640 },
       paths: [
-        { id: "f1", path: "M 120 120 H 440 V 180 H 560" },
-        { id: "f2", path: "M 180 160 V 240 H 320" },
-        { id: "f3", path: "M 420 140 V 260 H 540" },
-        { id: "f4", path: "M 480 200 V 320 H 560" },
-        { id: "f5", path: "M 120 280 H 260 V 360" },
-        { id: "f6", path: "M 300 220 V 360 H 440" },
-        { id: "f7", path: "M 180 340 V 440 H 280" },
-        { id: "f8", path: "M 380 320 V 440 H 520" },
-        { id: "f9", path: "M 480 380 V 500 H 560" },
-        { id: "f10", path: "M 120 420 H 220 V 500 H 100" },
-        { id: "f11", path: "M 260 420 V 520 H 380" },
-        { id: "f12", path: "M 420 460 V 540 H 520" },
-        { id: "f13", path: "M 160 540 H 320 V 580" },
-        { id: "f14", path: "M 360 520 V 580" }
+        { id: "green_frame", path: "M 420 220 V 90 H 100 V 320 H 380 V 350 H 300", color: "#06D6A0" },
+        { id: "pink_snake",  path: "M 170 140 H 240 V 170 H 140 V 140 H 250 V 170 H 290 V 140 H 370 V 200 H 170", color: "#FF006E" },
+        { id: "yellow_top",  path: "M 380 110 H 330", color: "#FFBE0B" },
+        { id: "yellow_hook", path: "M 200 230 H 160 V 270 H 140", color: "#FFBE0B" },
+        { id: "pink_u",      path: "M 310 270 V 220 H 260 V 270", color: "#FF006E" },
+        { id: "purp_wave1",  path: "M 270 350 H 210 V 380 H 170 V 350 H 70", color: "#8338EC" },
+        { id: "cyan_wave1",  path: "M 210 440 H 100 V 370", color: "#00B4D8" },
+        { id: "orange_hook", path: "M 310 380 H 260 V 410 H 230", color: "#FB5607" },
+        { id: "purp_wave2",  path: "M 420 340 V 380 H 370 V 420 H 330", color: "#8338EC" },
+        { id: "green_arrow", path: "M 420 440 V 390", color: "#06D6A0" },
+        { id: "orange_wave", path: "M 240 430 V 490 H 200 V 530", color: "#FB5607" },
+        { id: "purp_s",      path: "M 160 490 H 100 V 520 H 70", color: "#8338EC" },
+        { id: "orange_c",    path: "M 80 540 V 570 H 140", color: "#FB5607" },
+        { id: "yellow_d",    path: "M 240 540 V 580", color: "#FFBE0B" },
+        { id: "cyan_wave2",  path: "M 410 510 H 350 V 570 H 300 V 540", color: "#00B4D8" },
+        { id: "cyan_r",      path: "M 380 570 H 440", color: "#00B4D8" }
       ]
     }
   };
@@ -204,9 +254,10 @@
   // 3. ARROW CLASS
   // ------------------------------------------
   class Arrow {
-    constructor({ id, path = "" }) {
+    constructor({ id, path = "", color = null }) {
       this.id = String(id);
       this.path = String(path || "").trim();
+      this.color = color;
       this.isActive = true;
       this.isRemoved = false;
       this.points = this.parsePoints();
@@ -513,7 +564,9 @@
       this.arrowColors = new Map();
     }
 
-    getArrowColor(arrowId, idx = 0) {
+    getArrowColor(arrow, idx = 0) {
+      if (arrow && arrow.color) return arrow.color;
+      const arrowId = arrow ? arrow.id : idx;
       if (this.arrowColors.has(String(arrowId))) {
         return this.arrowColors.get(String(arrowId));
       }
@@ -561,7 +614,7 @@
 
       const active = arrows.filter((a) => a.isActive && !a.isRemoved);
       active.forEach((arrow, idx) => {
-        const color = this.getArrowColor(arrow.id, idx);
+        const color = this.getArrowColor(arrow, idx);
 
         const group = document.createElementNS(this.ns, "g");
         group.setAttribute("id", `arrow-group-${arrow.id}`);
@@ -646,7 +699,8 @@
         headEl.setAttribute("stroke", "#ffb703");
         pathEl.style.filter = "drop-shadow(0 0 14px rgba(255, 183, 3, 0.95))";
       } else {
-        const orig = this.arrowColors.get(String(arrowId)) || "#3A86FF";
+        const arrow = (activeArrows || []).find((a) => String(a.id) === String(arrowId));
+        const orig = (arrow && arrow.color) || this.arrowColors.get(String(arrowId)) || "#3A86FF";
         pathEl.setAttribute("stroke", orig);
         headEl.setAttribute("fill", orig);
         headEl.setAttribute("stroke", orig);
@@ -1000,11 +1054,26 @@
       loadLevel(nextLvl);
     });
 
+    // Level Badge click to jump levels
+    const levelBadgeEl = document.getElementById("levelBadge");
+    if (levelBadgeEl) {
+      levelBadgeEl.style.cursor = "pointer";
+      levelBadgeEl.title = "Click to jump to next level (or press 1-6)";
+      levelBadgeEl.addEventListener("click", () => {
+        audio.playClick();
+        loadLevel(currentLevelNum >= 6 ? 1 : currentLevelNum + 1);
+      });
+    }
+
     // Keyboard shortcuts
     window.addEventListener("keydown", (e) => {
       if (e.key === "r" || e.key === "R") loadLevel(currentLevelNum);
       if (e.key === "h" || e.key === "H") provideHint();
       if (e.key === "m" || e.key === "M") soundButton.click();
+      if (e.key >= "1" && e.key <= "6") {
+        audio.playClick();
+        loadLevel(parseInt(e.key, 10));
+      }
     });
 
     // Resize

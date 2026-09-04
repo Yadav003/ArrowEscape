@@ -1,18 +1,20 @@
 {
   "id": 5,
   "name": "Level 5 - Snake Labyrinth",
-  "board": { "width": 650, "height": 650 },
+  "board": { "width": 520, "height": 600 },
   "paths": [
-    { "id": "e1", "path": "M 240 520 V 460 H 420 V 420 H 560", "direction": "RIGHT" },
-    { "id": "e2", "path": "M 480 520 H 360 V 480 H 120", "direction": "LEFT" },
-    { "id": "e3", "path": "M 140 440 H 280 V 360", "direction": "UP" },
-    { "id": "e4", "path": "M 440 380 H 320 V 300 H 560", "direction": "RIGHT" },
-    { "id": "e5", "path": "M 520 220 V 360 H 480 V 440 H 560", "direction": "RIGHT" },
-    { "id": "e6", "path": "M 400 120 H 520 V 180", "direction": "DOWN" },
-    { "id": "e7", "path": "M 200 120 H 340 V 220 H 440", "direction": "RIGHT" },
-    { "id": "e8", "path": "M 120 160 H 180 V 280 H 100", "direction": "LEFT" },
-    { "id": "e9", "path": "M 260 200 V 320 H 180", "direction": "LEFT" },
-    { "id": "e10", "path": "M 360 200 V 260 H 280", "direction": "LEFT" },
-    { "id": "e11", "path": "M 300 380 V 140 H 220 V 80", "direction": "UP" }
+    { "id": "u_cyan",         "path": "M 120 80 V 140 H 80 V 70", "color": "#00B4D8" },
+    { "id": "yellow_left_v",  "path": "M 80 540 V 180 H 120 V 210", "color": "#FFBE0B" },
+    { "id": "pink_left_u",    "path": "M 160 480 V 240 H 120 V 480", "color": "#FF006E" },
+    { "id": "orange_top_s",   "path": "M 220 170 V 110 H 300 V 75 H 155 V 190 H 190 V 235", "color": "#FB5607" },
+    { "id": "pink_center_h",  "path": "M 340 135 H 260 V 260 H 225 V 225", "color": "#FF006E" },
+    { "id": "purple_top_box", "path": "M 340 105 H 375 V 135 H 300 V 265 H 410 V 75 H 325", "color": "#8338EC" },
+    { "id": "green_inner_c",  "path": "M 370 200 H 330 V 230 H 360", "color": "#06D6A0" },
+    { "id": "yellow_mid_bar", "path": "M 190 340 V 285 H 420", "color": "#FFBE0B" },
+    { "id": "yellow_s_curve", "path": "M 260 320 H 225 V 355 H 195 V 340 H 260", "color": "#FFBE0B" },
+    { "id": "orange_mid_s",   "path": "M 390 380 H 300 V 345 H 380", "color": "#FB5607" },
+    { "id": "cyan_corner",    "path": "M 265 350 V 380 H 180", "color": "#00B4D8" },
+    { "id": "purple_bot_u",   "path": "M 410 420 H 300 V 385 H 345", "color": "#8338EC" },
+    { "id": "green_bot_u",    "path": "M 410 450 H 120 V 415 H 270", "color": "#06D6A0" }
   ]
 }

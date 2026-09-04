@@ -1,15 +1,28 @@
 {
   "id": 4,
-  "name": "Level 4 - Interlocked Maze",
-  "board": { "width": 650, "height": 650 },
+  "name": "Level 4 - Heart Maze",
+  "board": { "width": 680, "height": 680 },
   "paths": [
-    { "id": "d1", "path": "M 120 120 H 480 V 180 H 560", "direction": "RIGHT" },
-    { "id": "d2", "path": "M 200 160 V 280 H 360", "direction": "RIGHT" },
-    { "id": "d3", "path": "M 440 160 V 320 H 540", "direction": "RIGHT" },
-    { "id": "d4", "path": "M 120 320 H 260 V 420", "direction": "DOWN" },
-    { "id": "d5", "path": "M 320 260 V 420 H 440", "direction": "RIGHT" },
-    { "id": "d6", "path": "M 480 280 V 480 H 560", "direction": "RIGHT" },
-    { "id": "d7", "path": "M 160 460 H 380 V 540 H 540", "direction": "RIGHT" },
-    { "id": "d8", "path": "M 280 500 V 580", "direction": "DOWN" }
+    { "id": "h1", "path": "M 110 240 V 140 H 170 V 210", "color": "#06D6A0" },
+    { "id": "h2", "path": "M 170 140 H 260 V 110 H 190", "color": "#8338EC" },
+    { "id": "h3", "path": "M 140 270 V 180 H 320 V 220 H 190", "color": "#00B4D8" },
+    { "id": "h4", "path": "M 480 110 H 550", "color": "#FB5607" },
+    { "id": "h5", "path": "M 360 210 V 140 H 590", "color": "#00B4D8" },
+    { "id": "h6", "path": "M 530 160 H 600 V 220", "color": "#06D6A0" },
+    { "id": "h7", "path": "M 460 250 V 160 H 570 V 210 H 470", "color": "#06D6A0" },
+    { "id": "h8", "path": "M 160 290 H 240 V 320 H 170", "color": "#FB5607" },
+    { "id": "h9", "path": "M 270 290 H 570", "color": "#FF006E" },
+    { "id": "h10", "path": "M 150 360 H 620 V 330 H 480", "color": "#00B4D8" },
+    { "id": "h11", "path": "M 180 400 H 580", "color": "#FFBE0B" },
+    { "id": "h12", "path": "M 140 440 H 620 V 410 H 220", "color": "#06D6A0" },
+    { "id": "h13", "path": "M 480 440 H 580", "color": "#FFBE0B" },
+    { "id": "h14", "path": "M 120 450 V 200 H 330 V 270 H 420", "color": "#00B4D8" },
+    { "id": "h15", "path": "M 150 480 H 410 V 510 H 350", "color": "#FFBE0B" },
+    { "id": "h16", "path": "M 210 540 V 490 H 300 V 560 H 370", "color": "#06D6A0" },
+    { "id": "h17", "path": "M 230 570 V 510 H 260 V 560", "color": "#FF006E" },
+    { "id": "h18", "path": "M 400 590 V 520 H 470", "color": "#FB5607" },
+    { "id": "h19", "path": "M 440 600 V 500 H 470 V 570 H 500", "color": "#8338EC" },
+    { "id": "h20", "path": "M 520 570 V 520 H 550", "color": "#FFBE0B" },
+    { "id": "h21", "path": "M 410 630 H 370 V 580 H 440 V 610", "color": "#FF006E" }
   ]
 }

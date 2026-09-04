@@ -1,11 +1,23 @@
 {
   "id": 2,
   "name": "Level 2 - The Swirl",
-  "board": { "width": 600, "height": 600 },
+  "board": { "width": 600, "height": 620 },
   "paths": [
-    { "id": "b1", "path": "M 160 160 H 420 V 260", "direction": "DOWN" },
-    { "id": "b2", "path": "M 460 220 V 440 H 520", "direction": "RIGHT" },
-    { "id": "b3", "path": "M 400 420 H 220 V 300", "direction": "UP" },
-    { "id": "b4", "path": "M 180 340 H 260 V 500", "direction": "DOWN" }
+    { "id": "top_cyan_u", "path": "M 480 180 V 70 H 530 V 140", "color": "#00B4D8" },
+    { "id": "bot_cyan_v", "path": "M 150 480 V 550", "color": "#00B4D8" },
+    { "id": "top_purple", "path": "M 220 80 H 70 V 210", "color": "#8338EC" },
+    { "id": "green_u1",   "path": "M 110 210 H 190 V 170 H 130", "color": "#06D6A0" },
+    { "id": "orange_top", "path": "M 120 130 H 420 V 70 H 460 V 170 H 330", "color": "#FB5607" },
+    { "id": "yellow_mid", "path": "M 380 210 H 330", "color": "#FFBE0B" },
+    { "id": "pink_mid",   "path": "M 240 180 H 270 V 250 H 420 V 220 H 530 V 250", "color": "#FF006E" },
+    { "id": "cyan_mid",   "path": "M 530 410 V 290 H 260 V 330 H 480", "color": "#00B4D8" },
+    { "id": "purple_v",   "path": "M 200 370 V 240", "color": "#8338EC" },
+    { "id": "orange_l",   "path": "M 70 340 V 520 H 110 V 260 H 140 V 340", "color": "#FB5607" },
+    { "id": "yellow_bot", "path": "M 70 560 H 200 V 440 H 240 V 470", "color": "#FFBE0B" },
+    { "id": "orange_s1",  "path": "M 250 500 H 340", "color": "#FB5607" },
+    { "id": "yellow_u",   "path": "M 530 520 H 430 V 480 H 540", "color": "#FFBE0B" },
+    { "id": "green_bot",  "path": "M 530 560 H 250 V 530 H 380", "color": "#06D6A0" },
+    { "id": "purple_mid", "path": "M 500 390 H 360 V 440 H 480 V 420 H 380 V 370 H 460", "color": "#8338EC" },
+    { "id": "pink_hook",  "path": "M 250 370 H 280 V 410", "color": "#FF006E" }
   ]
 }

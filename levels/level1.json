@@ -1,10 +1,12 @@
 {
   "id": 1,
-  "name": "Level 1 - Introduction",
-  "board": { "width": 600, "height": 600 },
+  "name": "Level 1 - Classic Loop",
+  "board": { "width": 500, "height": 600 },
   "paths": [
-    { "id": "a1", "path": "M 160 200 H 420", "direction": "RIGHT" },
-    { "id": "a2", "path": "M 440 180 V 380", "direction": "DOWN" },
-    { "id": "a3", "path": "M 160 400 H 440 V 460 H 520", "direction": "RIGHT" }
+    { "id": "yellow", "path": "M 80 480 V 540 H 420 V 70 H 260 V 380 H 220 V 60", "color": "#FFB703" },
+    { "id": "orange", "path": "M 320 440 V 160", "color": "#FB8500" },
+    { "id": "green",  "path": "M 170 200 V 340 H 130 V 160 H 180", "color": "#52B788" },
+    { "id": "cyan",   "path": "M 170 420 H 250 V 460 H 360 V 180 H 340 V 140 H 370", "color": "#2EC4B6" },
+    { "id": "purple", "path": "M 160 120 H 90 V 420 H 130 V 480 H 250", "color": "#9D4EDD" }
   ]
 }
