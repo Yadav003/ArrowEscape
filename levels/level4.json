@@ -1,22 +1,15 @@
-{"id":4,"name":"Level 4","board":{"width":1000,"height":1200},"paths":[
-{"id":"d1","path":"M80 100 H260 V220 H360","direction":"RIGHT"},
-{"id":"d2","path":"M420 80 V220 H520","direction":"DOWN"},
-{"id":"d3","path":"M600 120 H760 V220 H840","direction":"RIGHT"},
-{"id":"d4","path":"M900 100 V220 H960","direction":"DOWN"},
-{"id":"d5","path":"M120 300 H260 V400","direction":"RIGHT"},
-{"id":"d6","path":"M420 260 V400 H520","direction":"DOWN"},
-{"id":"d7","path":"M620 300 H760 V400 H820","direction":"RIGHT"},
-{"id":"d8","path":"M880 260 V400 H940","direction":"DOWN"},
-{"id":"d9","path":"M80 500 H260 V600 H340","direction":"RIGHT"},
-{"id":"d10","path":"M420 440 V600 H520","direction":"DOWN"},
-{"id":"d11","path":"M620 520 H760 V600","direction":"RIGHT"},
-{"id":"d12","path":"M880 500 V620 H940","direction":"DOWN"},
-{"id":"d13","path":"M120 700 H300 V800","direction":"RIGHT"},
-{"id":"d14","path":"M420 660 V800 H520","direction":"DOWN"},
-{"id":"d15","path":"M620 720 H760 V800 H820","direction":"RIGHT"},
-{"id":"d16","path":"M900 700 V820 H960","direction":"DOWN"},
-{"id":"d17","path":"M80 900 H260 V1000","direction":"RIGHT"},
-{"id":"d18","path":"M420 860 V1000 H520","direction":"DOWN"},
-{"id":"d19","path":"M620 900 H760 V1000 H840","direction":"RIGHT"},
-{"id":"d20","path":"M880 860 V1000 H940","direction":"DOWN"}
-]}
+{
+  "id": 4,
+  "name": "Level 4 - Interlocked Maze",
+  "board": { "width": 650, "height": 650 },
+  "paths": [
+    { "id": "d1", "path": "M 120 120 H 480 V 180 H 560", "direction": "RIGHT" },
+    { "id": "d2", "path": "M 200 160 V 280 H 360", "direction": "RIGHT" },
+    { "id": "d3", "path": "M 440 160 V 320 H 540", "direction": "RIGHT" },
+    { "id": "d4", "path": "M 120 320 H 260 V 420", "direction": "DOWN" },
+    { "id": "d5", "path": "M 320 260 V 420 H 440", "direction": "RIGHT" },
+    { "id": "d6", "path": "M 480 280 V 480 H 560", "direction": "RIGHT" },
+    { "id": "d7", "path": "M 160 460 H 380 V 540 H 540", "direction": "RIGHT" },
+    { "id": "d8", "path": "M 280 500 V 580", "direction": "DOWN" }
+  ]
+}

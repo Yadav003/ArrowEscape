@@ -1,25 +1,10 @@
 {
   "id": 1,
-  "name": "Level 1 - First Steps",
-  "board": {
-    "width": 600,
-    "height": 600
-  },
+  "name": "Level 1 - Introduction",
+  "board": { "width": 600, "height": 600 },
   "paths": [
-    {
-      "id": "a1",
-      "path": "M 150 150 H 300 V 220 H 480",
-      "direction": "RIGHT"
-    },
-    {
-      "id": "a2",
-      "path": "M 300 300 V 420 H 480",
-      "direction": "RIGHT"
-    },
-    {
-      "id": "a3",
-      "path": "M 150 420 H 220 V 300",
-      "direction": "UP"
-    }
+    { "id": "a1", "path": "M 160 200 H 420", "direction": "RIGHT" },
+    { "id": "a2", "path": "M 440 180 V 380", "direction": "DOWN" },
+    { "id": "a3", "path": "M 160 400 H 440 V 460 H 520", "direction": "RIGHT" }
   ]
 }

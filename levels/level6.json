@@ -1,26 +1,21 @@
-{"id":6,"name":"Level 6","board":{"width":1200,"height":1400},"paths":[
-{"id":"f1","path":"M80 120 H280 V240 H380","direction":"RIGHT"},
-{"id":"f2","path":"M440 80 V240 H540","direction":"DOWN"},
-{"id":"f3","path":"M640 140 H820 V260 H900","direction":"RIGHT"},
-{"id":"f4","path":"M980 100 V260 H1060","direction":"DOWN"},
-{"id":"f5","path":"M120 320 H280 V440","direction":"RIGHT"},
-{"id":"f6","path":"M440 280 V440 H540","direction":"DOWN"},
-{"id":"f7","path":"M660 340 H820 V460 H880","direction":"RIGHT"},
-{"id":"f8","path":"M980 320 V460 H1060","direction":"DOWN"},
-{"id":"f9","path":"M80 540 H280 V660 H380","direction":"RIGHT"},
-{"id":"f10","path":"M440 500 V660 H540","direction":"DOWN"},
-{"id":"f11","path":"M660 560 H820 V680","direction":"RIGHT"},
-{"id":"f12","path":"M980 540 V680 H1060","direction":"DOWN"},
-{"id":"f13","path":"M120 760 H300 V880","direction":"RIGHT"},
-{"id":"f14","path":"M460 740 V880 H560","direction":"DOWN"},
-{"id":"f15","path":"M680 780 H840 V900 H920","direction":"RIGHT"},
-{"id":"f16","path":"M1000 760 V900 H1080","direction":"DOWN"},
-{"id":"f17","path":"M80 980 H280 V1100","direction":"RIGHT"},
-{"id":"f18","path":"M440 940 V1100 H540","direction":"DOWN"},
-{"id":"f19","path":"M680 1000 H840 V1120 H920","direction":"RIGHT"},
-{"id":"f20","path":"M1000 980 V1120 H1080","direction":"DOWN"},
-{"id":"f21","path":"M160 1200 H340","direction":"LEFT"},
-{"id":"f22","path":"M560 1160 V1300 H620","direction":"UP"},
-{"id":"f23","path":"M760 1220 H940","direction":"LEFT"},
-{"id":"f24","path":"M1040 1180 V1320","direction":"UP"}
-]}
+{
+  "id": 6,
+  "name": "Level 6 - Master Challenge",
+  "board": { "width": 680, "height": 680 },
+  "paths": [
+    { "id": "f1", "path": "M 120 120 H 440 V 180 H 560", "direction": "RIGHT" },
+    { "id": "f2", "path": "M 180 160 V 240 H 320", "direction": "RIGHT" },
+    { "id": "f3", "path": "M 420 140 V 260 H 540", "direction": "RIGHT" },
+    { "id": "f4", "path": "M 480 200 V 320 H 560", "direction": "RIGHT" },
+    { "id": "f5", "path": "M 120 280 H 260 V 360", "direction": "DOWN" },
+    { "id": "f6", "path": "M 300 220 V 360 H 440", "direction": "RIGHT" },
+    { "id": "f7", "path": "M 180 340 V 440 H 280", "direction": "RIGHT" },
+    { "id": "f8", "path": "M 380 320 V 440 H 520", "direction": "RIGHT" },
+    { "id": "f9", "path": "M 480 380 V 500 H 560", "direction": "RIGHT" },
+    { "id": "f10", "path": "M 120 420 H 220 V 500 H 100", "direction": "LEFT" },
+    { "id": "f11", "path": "M 260 420 V 520 H 380", "direction": "RIGHT" },
+    { "id": "f12", "path": "M 420 460 V 540 H 520", "direction": "RIGHT" },
+    { "id": "f13", "path": "M 160 540 H 320 V 580", "direction": "DOWN" },
+    { "id": "f14", "path": "M 360 520 V 580", "direction": "DOWN" }
+  ]
+}

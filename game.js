@@ -1,153 +1,218 @@
 // ==========================================
 // ARROW ESCAPE - COMPLETE GAME ENGINE
-// Works via file:/// and http:// seamlessly
+// Features: Slithering Tail Escape Animation,
+// Interlocking Puzzles, Web Audio & Touch Controls
 // ==========================================
 
 (function () {
   "use strict";
 
   // ------------------------------------------
-  // 1. EMBEDDED LEVELS (100% Solvable & Calibrated)
+  // 1. EMBEDDED LEVELS (Interlocking & 100% Solvable)
   // ------------------------------------------
   const EMBEDDED_LEVELS = {
     1: {
       id: 1,
-      name: "Level 1 - First Steps",
+      name: "Level 1 - Introduction",
       board: { width: 600, height: 600 },
       paths: [
-        { id: "a1", path: "M 150 150 H 300 V 220 H 480" },
-        { id: "a2", path: "M 300 300 V 420 H 480" },
-        { id: "a3", path: "M 150 420 H 220 V 300" }
+        { id: "a1", path: "M 160 200 H 420" },
+        { id: "a2", path: "M 440 180 V 380" },
+        { id: "a3", path: "M 160 400 H 440 V 460 H 520" }
       ]
     },
     2: {
       id: 2,
-      name: "Level 2 - Clear the Path",
-      board: { width: 700, height: 700 },
+      name: "Level 2 - The Swirl",
+      board: { width: 600, height: 600 },
       paths: [
-        { id: "b1", path: "M 180 180 H 300 V 450" },
-        { id: "b2", path: "M 520 320 H 380" },
-        { id: "b3", path: "M 520 180 V 260 H 380" },
-        { id: "b4", path: "M 180 480 H 320 V 580" }
+        { id: "b1", path: "M 160 160 H 420 V 260" },
+        { id: "b2", path: "M 460 220 V 440 H 520" },
+        { id: "b3", path: "M 400 420 H 220 V 300" },
+        { id: "b4", path: "M 180 340 H 260 V 500" }
       ]
     },
     3: {
       id: 3,
-      name: "Level 3 - Corner Escape",
-      board: { width: 800, height: 800 },
+      name: "Level 3 - Snake Tracks",
+      board: { width: 600, height: 600 },
       paths: [
-        { id: "c1", path: "M 200 160 H 350 V 240 H 650" },
-        { id: "c2", path: "M 400 120 V 200 H 280" },
-        { id: "c3", path: "M 200 320 V 440 H 340" },
-        { id: "c4", path: "M 500 280 V 480" },
-        { id: "c5", path: "M 650 380 H 450" },
-        { id: "c6", path: "M 240 540 H 440 V 660" },
-        { id: "c7", path: "M 560 540 V 640 H 700" },
-        { id: "c8", path: "M 350 720 H 150" }
+        { id: "c1", path: "M 140 140 H 420 V 220 H 520" },
+        { id: "c2", path: "M 200 200 V 340 H 320" },
+        { id: "c3", path: "M 440 180 V 380 H 380" },
+        { id: "c4", path: "M 140 400 H 340 V 480 H 520" },
+        { id: "c5", path: "M 460 360 V 520" },
+        { id: "c6", path: "M 240 540 H 120" }
       ]
     },
     4: {
       id: 4,
-      name: "Level 4 - The Maze",
-      board: { width: 1000, height: 1200 },
+      name: "Level 4 - Interlocked Maze",
+      board: { width: 650, height: 650 },
       paths: [
-        { id: "d1", path: "M80 100 H260 V220 H360" },
-        { id: "d2", path: "M420 80 V220 H520" },
-        { id: "d3", path: "M600 120 H760 V220 H840" },
-        { id: "d4", path: "M900 100 V220 H960" },
-        { id: "d5", path: "M120 300 H260 V400" },
-        { id: "d6", path: "M420 260 V400 H520" },
-        { id: "d7", path: "M620 300 H760 V400 H820" },
-        { id: "d8", path: "M880 260 V400 H940" },
-        { id: "d9", path: "M80 500 H260 V600 H340" },
-        { id: "d10", path: "M420 440 V600 H520" },
-        { id: "d11", path: "M620 520 H760 V600" },
-        { id: "d12", path: "M880 500 V620 H940" },
-        { id: "d13", path: "M120 700 H300 V800" },
-        { id: "d14", path: "M420 660 V800 H520" },
-        { id: "d15", path: "M620 720 H760 V800 H820" },
-        { id: "d16", path: "M900 700 V820 H960" },
-        { id: "d17", path: "M80 900 H260 V1000" },
-        { id: "d18", path: "M420 860 V1000 H520" },
-        { id: "d19", path: "M620 900 H760 V1000 H840" },
-        { id: "d20", path: "M880 860 V1000 H940" }
+        { id: "d1", path: "M 120 120 H 480 V 180 H 560" },
+        { id: "d2", path: "M 200 160 V 280 H 360" },
+        { id: "d3", path: "M 440 160 V 320 H 540" },
+        { id: "d4", path: "M 120 320 H 260 V 420" },
+        { id: "d5", path: "M 320 260 V 420 H 440" },
+        { id: "d6", path: "M 480 280 V 480 H 560" },
+        { id: "d7", path: "M 160 460 H 380 V 540 H 540" },
+        { id: "d8", path: "M 280 500 V 580" }
       ]
     },
     5: {
       id: 5,
-      name: "Level 5 - Labyrinth",
-      board: { width: 1000, height: 1300 },
+      name: "Level 5 - Snake Labyrinth",
+      board: { width: 650, height: 650 },
       paths: [
-        { id: "e1", path: "M80 100 H260 V220 H360" },
-        { id: "e2", path: "M420 80 V220 H520" },
-        { id: "e3", path: "M600 120 H760 V240" },
-        { id: "e4", path: "M880 100 V220 H960" },
-        { id: "e5", path: "M120 300 H260 V420" },
-        { id: "e6", path: "M420 280 V400 H520" },
-        { id: "e7", path: "M620 320 H760 V420 H840" },
-        { id: "e8", path: "M920 300 V420 H980" },
-        { id: "e9", path: "M80 520 H260 V640 H360" },
-        { id: "e10", path: "M420 500 V640 H520" },
-        { id: "e11", path: "M620 540 H760 V660" },
-        { id: "e12", path: "M880 520 V660 H960" },
-        { id: "e13", path: "M120 720 H300 V840" },
-        { id: "e14", path: "M440 720 V840 H540" },
-        { id: "e15", path: "M640 740 H800 V860" },
-        { id: "e16", path: "M900 740 V860 H980" },
-        { id: "e17", path: "M80 940 H260 V1060" },
-        { id: "e18", path: "M420 920 V1060 H520" },
-        { id: "e19", path: "M620 940 H760 V1060 H840" },
-        { id: "e20", path: "M880 940 V1080 H960" },
-        { id: "e21", path: "M160 1160 H320" },
-        { id: "e22", path: "M520 1120 V1240" }
+        { id: "e1", path: "M 240 520 V 460 H 420 V 420 H 560" },
+        { id: "e2", path: "M 480 520 H 360 V 480 H 120" },
+        { id: "e3", path: "M 140 440 H 280 V 360" },
+        { id: "e4", path: "M 440 380 H 320 V 300 H 560" },
+        { id: "e5", path: "M 520 220 V 360 H 480 V 440 H 560" },
+        { id: "e6", path: "M 400 120 H 520 V 180" },
+        { id: "e7", path: "M 200 120 H 340 V 220 H 440" },
+        { id: "e8", path: "M 120 160 H 180 V 280 H 100" },
+        { id: "e9", path: "M 260 200 V 320 H 180" },
+        { id: "e10", path: "M 360 200 V 260 H 280" },
+        { id: "e11", path: "M 300 380 V 140 H 220 V 80" }
       ]
     },
     6: {
       id: 6,
       name: "Level 6 - Master Challenge",
-      board: { width: 1100, height: 1400 },
+      board: { width: 680, height: 680 },
       paths: [
-        { id: "f1", path: "M100 100 H280 V240 H380" },
-        { id: "f2", path: "M440 100 V240 H540" },
-        { id: "f3", path: "M640 120 H800 V240 H900" },
-        { id: "f4", path: "M980 120 V260 H1060" },
-        { id: "f5", path: "M140 320 H280 V440" },
-        { id: "f6", path: "M440 300 V440 H540" },
-        { id: "f7", path: "M660 340 H800 V440 H880" },
-        { id: "f8", path: "M980 320 V460 H1060" },
-        { id: "f9", path: "M100 540 H280 V660 H380" },
-        { id: "f10", path: "M440 520 V660 H540" },
-        { id: "f11", path: "M660 560 H820 V680" },
-        { id: "f12", path: "M980 540 V680 H1060" },
-        { id: "f13", path: "M140 760 H300 V880" },
-        { id: "f14", path: "M460 760 V880 H560" },
-        { id: "f15", path: "M680 760 H840 V880 H920" },
-        { id: "f16", path: "M1000 760 V900 H1080" },
-        { id: "f17", path: "M100 980 H280 V1100" },
-        { id: "f18", path: "M440 960 V1100 H540" },
-        { id: "f19", path: "M680 980 H820 V1100 H920" },
-        { id: "f20", path: "M1000 980 V1120 H1080" },
-        { id: "f21", path: "M160 1200 H340" },
-        { id: "f22", path: "M560 1200 V1300 H620" },
-        { id: "f23", path: "M760 1220 H940" },
-        { id: "f24", path: "M1040 1180 V1320" }
+        { id: "f1", path: "M 120 120 H 440 V 180 H 560" },
+        { id: "f2", path: "M 180 160 V 240 H 320" },
+        { id: "f3", path: "M 420 140 V 260 H 540" },
+        { id: "f4", path: "M 480 200 V 320 H 560" },
+        { id: "f5", path: "M 120 280 H 260 V 360" },
+        { id: "f6", path: "M 300 220 V 360 H 440" },
+        { id: "f7", path: "M 180 340 V 440 H 280" },
+        { id: "f8", path: "M 380 320 V 440 H 520" },
+        { id: "f9", path: "M 480 380 V 500 H 560" },
+        { id: "f10", path: "M 120 420 H 220 V 500 H 100" },
+        { id: "f11", path: "M 260 420 V 520 H 380" },
+        { id: "f12", path: "M 420 460 V 540 H 520" },
+        { id: "f13", path: "M 160 540 H 320 V 580" },
+        { id: "f14", path: "M 360 520 V 580" }
       ]
     }
   };
 
   // ------------------------------------------
-  // 2. ARROW CLASS
+  // 2. GEOMETRY & TRAJECTORY UTILITIES
+  // ------------------------------------------
+  function dist(p1, p2) {
+    return Math.hypot(p2.x - p1.x, p2.y - p1.y);
+  }
+
+  function getPointAtDistance(polyline, d) {
+    if (d <= 0) return { point: { ...polyline[0] }, segIndex: 0 };
+    let current = 0;
+    for (let i = 0; i < polyline.length - 1; i++) {
+      const p1 = polyline[i];
+      const p2 = polyline[i + 1];
+      const segLen = dist(p1, p2);
+      if (current + segLen >= d || i === polyline.length - 2) {
+        const remain = Math.max(0, d - current);
+        const ratio = segLen === 0 ? 0 : Math.min(1, remain / segLen);
+        return {
+          point: {
+            x: p1.x + (p2.x - p1.x) * ratio,
+            y: p1.y + (p2.y - p1.y) * ratio
+          },
+          segIndex: i
+        };
+      }
+      current += segLen;
+    }
+    return { point: { ...polyline[polyline.length - 1] }, segIndex: polyline.length - 2 };
+  }
+
+  function slicePolyline(polyline, uStart, uEnd) {
+    if (uStart >= uEnd) return [];
+    const startInfo = getPointAtDistance(polyline, uStart);
+    const endInfo = getPointAtDistance(polyline, uEnd);
+
+    const pts = [startInfo.point];
+    for (let i = startInfo.segIndex + 1; i <= endInfo.segIndex; i++) {
+      const v = polyline[i];
+      if (dist(pts[pts.length - 1], v) > 0.5) {
+        pts.push({ ...v });
+      }
+    }
+    if (dist(pts[pts.length - 1], endInfo.point) > 0.5) {
+      pts.push(endInfo.point);
+    }
+    return pts;
+  }
+
+  function polylineToPathD(pts) {
+    if (pts.length < 2) return "";
+    let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+    for (let i = 1; i < pts.length; i++) {
+      d += ` L ${pts[i].x.toFixed(1)} ${pts[i].y.toFixed(1)}`;
+    }
+    return d;
+  }
+
+  function getArrowheadData(head, direction) {
+    const hx = head.x;
+    const hy = head.y;
+    const L = 22; // Base length back from head
+    const W = 16; // Wing half-width (32px total, vs 15px stem)
+    const E = 8;  // Forward tip extension
+
+    let tip, wing1, wing2, stemEnd;
+
+    if (direction === "RIGHT") {
+      tip = { x: hx + E, y: hy };
+      wing1 = { x: hx - L, y: hy - W };
+      wing2 = { x: hx - L, y: hy + W };
+      stemEnd = { x: hx - 10, y: hy };
+    } else if (direction === "LEFT") {
+      tip = { x: hx - E, y: hy };
+      wing1 = { x: hx + L, y: hy - W };
+      wing2 = { x: hx + L, y: hy + W };
+      stemEnd = { x: hx + 10, y: hy };
+    } else if (direction === "DOWN") {
+      tip = { x: hx, y: hy + E };
+      wing1 = { x: hx - W, y: hy - L };
+      wing2 = { x: hx + W, y: hy - L };
+      stemEnd = { x: hx, y: hy - 10 };
+    } else if (direction === "UP") {
+      tip = { x: hx, y: hy - E };
+      wing1 = { x: hx - W, y: hy + L };
+      wing2 = { x: hx + W, y: hy + L };
+      stemEnd = { x: hx, y: hy + 10 };
+    } else {
+      tip = { x: hx + E, y: hy };
+      wing1 = { x: hx - L, y: hy - W };
+      wing2 = { x: hx - L, y: hy + W };
+      stemEnd = { x: hx - 10, y: hy };
+    }
+
+    return {
+      points: `${wing1.x.toFixed(1)},${wing1.y.toFixed(1)} ${tip.x.toFixed(1)},${tip.y.toFixed(1)} ${wing2.x.toFixed(1)},${wing2.y.toFixed(1)}`,
+      stemEnd
+    };
+  }
+
+  // ------------------------------------------
+  // 3. ARROW CLASS
   // ------------------------------------------
   class Arrow {
     constructor({ id, path = "" }) {
       this.id = String(id);
       this.path = String(path || "").trim();
-      this.isSelected = false;
       this.isActive = true;
       this.isRemoved = false;
-      this.points = this.getPathPoints();
+      this.points = this.parsePoints();
       this.headPoint = this.points[this.points.length - 1] || { x: 0, y: 0 };
       this.direction = this.determineDirection();
+      this.length = this.calculateLength();
     }
 
     determineDirection() {
@@ -165,8 +230,15 @@
       return "RIGHT";
     }
 
-    getPathPoints() {
-      if (this._pathPoints) return this._pathPoints;
+    calculateLength() {
+      let total = 0;
+      for (let i = 0; i < this.points.length - 1; i++) {
+        total += dist(this.points[i], this.points[i + 1]);
+      }
+      return total;
+    }
+
+    parsePoints() {
       const commands = this.path.match(/[a-zA-Z][^a-zA-Z]*/g) || [];
       let cx = 0, cy = 0;
       const pts = [];
@@ -192,20 +264,16 @@
         }
       }
       if (!pts.length) pts.push({ x: cx, y: cy });
-      this._pathPoints = pts;
       return pts;
     }
 
     getSegments() {
       if (this._segments) return this._segments;
-      const pts = this.getPathPoints();
       const segs = [];
-      for (let i = 0; i < pts.length - 1; i++) {
-        const p1 = pts[i];
-        const p2 = pts[i + 1];
+      for (let i = 0; i < this.points.length - 1; i++) {
+        const p1 = this.points[i], p2 = this.points[i + 1];
         segs.push({
-          p1,
-          p2,
+          p1, p2,
           minX: Math.min(p1.x, p2.x),
           maxX: Math.max(p1.x, p2.x),
           minY: Math.min(p1.y, p2.y),
@@ -220,7 +288,7 @@
   }
 
   // ------------------------------------------
-  // 3. MOVEMENT ENGINE (Precise 2D Ray Collision)
+  // 4. MOVEMENT ENGINE (Precise 2D Ray Collision)
   // ------------------------------------------
   class MovementEngine {
     constructor(board, arrows = []) {
@@ -277,44 +345,32 @@
       const minY = seg.minY, maxY = seg.maxY;
 
       if (dir === "RIGHT") {
-        if (seg.isVertical) {
-          if (seg.p1.x > head.x + 2 && head.y >= minY - tol && head.y <= maxY + tol) {
-            return { distance: seg.p1.x - head.x };
-          }
-        } else if (seg.isHorizontal) {
-          if (Math.abs(seg.p1.y - head.y) <= tol && maxX > head.x + 2) {
-            return { distance: Math.max(0, minX - head.x) };
-          }
+        if (seg.isVertical && seg.p1.x > head.x + 2 && head.y >= minY - tol && head.y <= maxY + tol) {
+          return { distance: seg.p1.x - head.x };
+        }
+        if (seg.isHorizontal && Math.abs(seg.p1.y - head.y) <= tol && maxX > head.x + 2) {
+          return { distance: Math.max(0, minX - head.x) };
         }
       } else if (dir === "LEFT") {
-        if (seg.isVertical) {
-          if (seg.p1.x < head.x - 2 && head.y >= minY - tol && head.y <= maxY + tol) {
-            return { distance: head.x - seg.p1.x };
-          }
-        } else if (seg.isHorizontal) {
-          if (Math.abs(seg.p1.y - head.y) <= tol && minX < head.x - 2) {
-            return { distance: Math.max(0, head.x - maxX) };
-          }
+        if (seg.isVertical && seg.p1.x < head.x - 2 && head.y >= minY - tol && head.y <= maxY + tol) {
+          return { distance: head.x - seg.p1.x };
+        }
+        if (seg.isHorizontal && Math.abs(seg.p1.y - head.y) <= tol && minX < head.x - 2) {
+          return { distance: Math.max(0, head.x - maxX) };
         }
       } else if (dir === "DOWN") {
-        if (seg.isHorizontal) {
-          if (seg.p1.y > head.y + 2 && head.x >= minX - tol && head.x <= maxX + tol) {
-            return { distance: seg.p1.y - head.y };
-          }
-        } else if (seg.isVertical) {
-          if (Math.abs(seg.p1.x - head.x) <= tol && maxY > head.y + 2) {
-            return { distance: Math.max(0, minY - head.y) };
-          }
+        if (seg.isHorizontal && seg.p1.y > head.y + 2 && head.x >= minX - tol && head.x <= maxX + tol) {
+          return { distance: seg.p1.y - head.y };
+        }
+        if (seg.isVertical && Math.abs(seg.p1.x - head.x) <= tol && maxY > head.y + 2) {
+          return { distance: Math.max(0, minY - head.y) };
         }
       } else if (dir === "UP") {
-        if (seg.isHorizontal) {
-          if (seg.p1.y < head.y - 2 && head.x >= minX - tol && head.x <= maxX + tol) {
-            return { distance: head.y - seg.p1.y };
-          }
-        } else if (seg.isVertical) {
-          if (Math.abs(seg.p1.x - head.x) <= tol && minY < head.y - 2) {
-            return { distance: Math.max(0, head.y - maxY) };
-          }
+        if (seg.isHorizontal && seg.p1.y < head.y - 2 && head.x >= minX - tol && head.x <= maxX + tol) {
+          return { distance: head.y - seg.p1.y };
+        }
+        if (seg.isVertical && Math.abs(seg.p1.x - head.x) <= tol && minY < head.y - 2) {
+          return { distance: Math.max(0, head.y - maxY) };
         }
       }
       return null;
@@ -330,7 +386,7 @@
   }
 
   // ------------------------------------------
-  // 4. AUDIO SYNTHESIZER (Native Web Audio)
+  // 5. AUDIO SYNTHESIZER
   // ------------------------------------------
   class AudioManager {
     constructor() {
@@ -385,16 +441,16 @@
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = "sine";
-      osc.frequency.setValueAtTime(320, t);
-      osc.frequency.exponentialRampToValueAtTime(720, t + 0.16);
-      osc.frequency.exponentialRampToValueAtTime(980, t + 0.28);
+      osc.frequency.setValueAtTime(340, t);
+      osc.frequency.exponentialRampToValueAtTime(780, t + 0.18);
+      osc.frequency.exponentialRampToValueAtTime(1020, t + 0.32);
       gain.gain.setValueAtTime(0.01, t);
-      gain.gain.linearRampToValueAtTime(0.14, t + 0.04);
-      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.32);
+      gain.gain.linearRampToValueAtTime(0.15, t + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.36);
       osc.connect(gain);
       gain.connect(this.ctx.destination);
       osc.start(t);
-      osc.stop(t + 0.32);
+      osc.stop(t + 0.36);
     }
 
     playBlocked() {
@@ -407,7 +463,7 @@
       osc.type = "triangle";
       osc.frequency.setValueAtTime(160, t);
       osc.frequency.exponentialRampToValueAtTime(70, t + 0.13);
-      gain.gain.setValueAtTime(0.22, t);
+      gain.gain.setValueAtTime(0.24, t);
       gain.gain.exponentialRampToValueAtTime(0.001, t + 0.14);
       osc.connect(gain);
       gain.connect(this.ctx.destination);
@@ -438,21 +494,21 @@
   }
 
   // ------------------------------------------
-  // 5. SVG BOARD RENDERER (Clean Geometrical Arrowheads)
+  // 6. SVG BOARD RENDERER
   // ------------------------------------------
   class SVGRenderer {
     constructor(container) {
       this.container = container;
       this.ns = "http://www.w3.org/2000/svg";
       this.palette = [
-        "#3A86FF", // Vibrant Blue
-        "#06D6A0", // Mint Emerald
-        "#FF006E", // Hot Magenta
-        "#8338EC", // Vivid Purple
-        "#FB5607", // Electric Orange
-        "#FFBE0B", // Amber Gold
-        "#00B4D8", // Sky Cyan
-        "#7209B7"  // Royal Violet
+        "#3A86FF", // Blue
+        "#06D6A0", // Mint
+        "#FF006E", // Magenta
+        "#8338EC", // Purple
+        "#FB5607", // Orange
+        "#FFBE0B", // Gold
+        "#00B4D8", // Cyan
+        "#7209B7"  // Violet
       ];
       this.arrowColors = new Map();
     }
@@ -464,24 +520,6 @@
       const c = this.palette[idx % this.palette.length];
       this.arrowColors.set(String(arrowId), c);
       return c;
-    }
-
-    getArrowheadPoints(head, direction) {
-      const hx = head.x;
-      const hy = head.y;
-      const b = 24; // Base half-width
-      const l = 32; // Length
-
-      if (direction === "RIGHT") {
-        return `${hx - l},${hy - b} ${hx + 6},${hy} ${hx - l},${hy + b}`;
-      } else if (direction === "LEFT") {
-        return `${hx + l},${hy - b} ${hx - 6},${hy} ${hx + l},${hy + b}`;
-      } else if (direction === "DOWN") {
-        return `${hx - b},${hy - l} ${hx},${hy + 6} ${hx + b},${hy - l}`;
-      } else if (direction === "UP") {
-        return `${hx - b},${hy + l} ${hx},${hy - 6} ${hx + b},${hy + l}`;
-      }
-      return `${hx - l},${hy - b} ${hx + 6},${hy} ${hx - l},${hy + b}`;
     }
 
     createGridBackground(w, h) {
@@ -518,7 +556,7 @@
       const contentGroup = document.createElementNS(this.ns, "g");
       contentGroup.classList.add("board-content");
 
-      // Grid dots
+      // Background dot matrix
       contentGroup.appendChild(this.createGridBackground(w, h));
 
       const active = arrows.filter((a) => a.isActive && !a.isRemoved);
@@ -530,36 +568,40 @@
         group.classList.add("arrow-item");
         group.dataset.arrowId = arrow.id;
 
-        // Path line
+        // Arrowhead data with flaring wings and trimmed stem end
+        const headData = getArrowheadData(arrow.headPoint, arrow.direction);
+        const stemPts = [...arrow.points.slice(0, -1), headData.stemEnd];
+        const stemPathD = polylineToPathD(stemPts);
+
+        // Path body (sleek rounded snake)
         const pathEl = document.createElementNS(this.ns, "path");
-        pathEl.setAttribute("d", arrow.path);
+        pathEl.setAttribute("d", stemPathD);
         pathEl.setAttribute("fill", "none");
         pathEl.setAttribute("stroke", color);
-        pathEl.setAttribute("stroke-width", "26");
+        pathEl.setAttribute("stroke-width", "15");
         pathEl.setAttribute("stroke-linecap", "round");
         pathEl.setAttribute("stroke-linejoin", "round");
         pathEl.setAttribute("id", `arrow-path-${arrow.id}`);
         pathEl.classList.add("board-path");
         pathEl.dataset.arrowId = arrow.id;
 
-        // Integrated triangular arrowhead (Reference: ChatGPT image)
-        const headPoints = this.getArrowheadPoints(arrow.headPoint, arrow.direction);
+        // Integrated triangular head with distinct flaring wings
         const headEl = document.createElementNS(this.ns, "polygon");
-        headEl.setAttribute("points", headPoints);
+        headEl.setAttribute("points", headData.points);
         headEl.setAttribute("fill", color);
         headEl.setAttribute("stroke", color);
-        headEl.setAttribute("stroke-width", "4");
+        headEl.setAttribute("stroke-width", "2");
         headEl.setAttribute("stroke-linejoin", "round");
         headEl.setAttribute("id", `arrow-head-${arrow.id}`);
         headEl.classList.add("board-head");
         headEl.dataset.arrowId = arrow.id;
 
-        // Enlarged invisible touch hit area
+        // Touch hit area (generous for easy tapping)
         const hitEl = document.createElementNS(this.ns, "path");
         hitEl.setAttribute("d", arrow.path);
         hitEl.setAttribute("fill", "none");
         hitEl.setAttribute("stroke", "transparent");
-        hitEl.setAttribute("stroke-width", "54");
+        hitEl.setAttribute("stroke-width", "46");
         hitEl.setAttribute("stroke-linecap", "round");
         hitEl.setAttribute("stroke-linejoin", "round");
         hitEl.classList.add("hit-path");
@@ -618,30 +660,60 @@
   }
 
   // ------------------------------------------
-  // 6. ANIMATION MANAGER
+  // 7. SLITHERING ANIMATION CONTROLLER
   // ------------------------------------------
-  class AnimationManager {
+  class SlitherAnimator {
     constructor() {
       this.isAnimating = false;
     }
 
-    animateMovement(element, direction, distance) {
-      if (!element) return Promise.resolve();
+    // Slithers arrow along its path and unbends straight out along heading
+    animateEscape(groupEl, pathEl, headEl, arrow, exitDistance, duration = 380) {
       this.isAnimating = true;
+      const head = arrow.headPoint;
+      const dir = arrow.direction;
+      const len = arrow.length;
 
-      const duration = 300;
-      const travel = Math.max(distance, 500);
+      // Unit vector for exit ray
+      let dx = 0, dy = 0;
+      if (dir === "RIGHT") dx = 1;
+      else if (dir === "LEFT") dx = -1;
+      else if (dir === "DOWN") dy = 1;
+      else if (dir === "UP") dy = -1;
+
+      // Trajectory: original vertices + far off-screen exit point
+      const totalExtension = exitDistance + len + 400;
+      const exitPoint = {
+        x: head.x + dx * totalExtension,
+        y: head.y + dy * totalExtension
+      };
+      const trajectory = [...arrow.points, exitPoint];
+
+      const totalTravel = exitDistance + len + 80;
       const start = performance.now();
-      const unit = this.getUnit(direction);
 
       return new Promise((resolve) => {
         const step = (now) => {
           const p = Math.min((now - start) / duration, 1);
-          const eased = Math.pow(p, 1.8);
-          const dist = travel * eased;
+          // Ease-in acceleration: starts smooth, speeds up as it straightens out
+          const eased = Math.pow(p, 1.5);
+          const s = totalTravel * eased;
 
-          element.setAttribute("transform", `translate(${unit.x * dist} ${unit.y * dist})`);
-          element.style.opacity = String(Math.max(0, 1 - p * 0.8));
+          const uTail = s;
+          const uHead = len + s;
+
+          const uStemEnd = Math.max(uTail + 1, uHead - 10);
+          const slicedStem = slicePolyline(trajectory, uTail, uStemEnd);
+          if (slicedStem.length >= 2) {
+            pathEl.setAttribute("d", polylineToPathD(slicedStem));
+          }
+          const currentHead = getPointAtDistance(trajectory, uHead).point;
+          headEl.setAttribute("points", getArrowheadData(currentHead, dir).points);
+
+          // Fade out near very end
+          if (p > 0.8) {
+            groupEl.style.opacity = String(Math.max(0, 1 - (p - 0.8) * 5));
+          }
 
           if (p < 1) {
             requestAnimationFrame(step);
@@ -654,45 +726,60 @@
       });
     }
 
-    animateBlocked(element, direction) {
-      if (!element) return Promise.resolve();
+    // Elastic nudge and spring back when blocked
+    animateBlocked(pathEl, headEl, arrow, duration = 180) {
       this.isAnimating = true;
+      const head = arrow.headPoint;
+      const dir = arrow.direction;
+      const len = arrow.length;
 
-      const duration = 180;
+      let dx = 0, dy = 0;
+      if (dir === "RIGHT") dx = 1;
+      else if (dir === "LEFT") dx = -1;
+      else if (dir === "DOWN") dy = 1;
+      else if (dir === "UP") dy = -1;
+
+      const trajectory = [
+        ...arrow.points,
+        { x: head.x + dx * 50, y: head.y + dy * 50 }
+      ];
+
       const start = performance.now();
-      const unit = this.getUnit(direction);
+      const initialHeadData = getArrowheadData(head, dir);
+      const initialStemPts = [...arrow.points.slice(0, -1), initialHeadData.stemEnd];
+      const initialD = polylineToPathD(initialStemPts);
 
       return new Promise((resolve) => {
         const step = (now) => {
           const p = Math.min((now - start) / duration, 1);
+          // Spring factor
           const factor = Math.sin(p * Math.PI * 1.5) * Math.exp(-p * 2.5);
-          const shift = 14 * factor;
+          const s = Math.max(0, 14 * factor);
 
-          element.setAttribute("transform", `translate(${unit.x * shift} ${unit.y * shift})`);
+          const uStemEnd = Math.max(s + 1, len + s - 10);
+          const slicedStem = slicePolyline(trajectory, s, uStemEnd);
+          if (slicedStem.length >= 2) {
+            pathEl.setAttribute("d", polylineToPathD(slicedStem));
+          }
+          const currentHead = getPointAtDistance(trajectory, len + s).point;
+          headEl.setAttribute("points", getArrowheadData(currentHead, dir).points);
 
           if (p < 1) {
             requestAnimationFrame(step);
           } else {
-            element.removeAttribute("transform");
+            pathEl.setAttribute("d", initialD);
+            headEl.setAttribute("points", initialHeadData.points);
             this.isAnimating = false;
             resolve();
           }
         };
         requestAnimationFrame(step);
       });
-    }
-
-    getUnit(direction) {
-      if (direction === "RIGHT") return { x: 1, y: 0 };
-      if (direction === "LEFT") return { x: -1, y: 0 };
-      if (direction === "DOWN") return { x: 0, y: 1 };
-      if (direction === "UP") return { x: 0, y: -1 };
-      return { x: 1, y: 0 };
     }
   }
 
   // ------------------------------------------
-  // 7. GAME CONTROLLER & DOM INITIALIZATION
+  // 8. GAME CONTROLLER
   // ------------------------------------------
   let currentLevelNum = 1;
   let currentLevelData = null;
@@ -701,7 +788,7 @@
   let remainingHints = 3;
 
   const audio = new AudioManager();
-  const animator = new AnimationManager();
+  const animator = new SlitherAnimator();
   let renderer = null;
   let movementEngine = null;
   let isLocked = false;
@@ -720,13 +807,11 @@
   }
 
   function updateUI() {
-    // Level Badge
     const badge = document.getElementById("levelBadge");
     if (badge && currentLevelData) {
       badge.textContent = currentLevelData.name || `Level ${currentLevelNum}`;
     }
 
-    // Hearts
     const hearts = document.querySelectorAll(".heart");
     hearts.forEach((h, idx) => {
       if (idx < lives) {
@@ -736,7 +821,6 @@
       }
     });
 
-    // Hint Badge
     const hintBadge = document.getElementById("hintBadge");
     if (hintBadge) {
       hintBadge.textContent = String(remainingHints);
@@ -760,7 +844,9 @@
     movementEngine.setArrows(activeArrows);
     const analysis = movementEngine.analyze(arrow.id);
     const groupEl = document.getElementById(`arrow-group-${arrow.id}`);
-    if (!groupEl) return;
+    const pathEl = document.getElementById(`arrow-path-${arrow.id}`);
+    const headEl = document.getElementById(`arrow-head-${arrow.id}`);
+    if (!groupEl || !pathEl || !headEl) return;
 
     isLocked = true;
 
@@ -768,7 +854,8 @@
       audio.playEscape();
       renderer.setArrowState(arrow.id, "selected");
 
-      animator.animateMovement(groupEl, arrow.direction, analysis.travelDistance).then(() => {
+      // Animate slithering along path out to edge!
+      animator.animateEscape(groupEl, pathEl, headEl, arrow, analysis.travelDistance).then(() => {
         arrow.isActive = false;
         arrow.isRemoved = true;
         groupEl.remove();
@@ -793,7 +880,8 @@
       updateUI();
       showToast("Blocked arrow! -1 ❤", false);
 
-      animator.animateBlocked(groupEl, arrow.direction).then(() => {
+      // Animate elastic nudge and rebound
+      animator.animateBlocked(pathEl, headEl, arrow).then(() => {
         renderer.clearArrowState(arrow.id);
         isLocked = false;
 

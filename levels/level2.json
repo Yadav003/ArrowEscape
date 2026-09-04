@@ -1,30 +1,11 @@
 {
   "id": 2,
-  "name": "Level 2 - Clear the Path",
-  "board": {
-    "width": 700,
-    "height": 700
-  },
+  "name": "Level 2 - The Swirl",
+  "board": { "width": 600, "height": 600 },
   "paths": [
-    {
-      "id": "b1",
-      "path": "M 180 180 H 300 V 450",
-      "direction": "DOWN"
-    },
-    {
-      "id": "b2",
-      "path": "M 520 320 H 380",
-      "direction": "LEFT"
-    },
-    {
-      "id": "b3",
-      "path": "M 520 180 V 260 H 380",
-      "direction": "LEFT"
-    },
-    {
-      "id": "b4",
-      "path": "M 180 480 H 320 V 580",
-      "direction": "DOWN"
-    }
+    { "id": "b1", "path": "M 160 160 H 420 V 260", "direction": "DOWN" },
+    { "id": "b2", "path": "M 460 220 V 440 H 520", "direction": "RIGHT" },
+    { "id": "b3", "path": "M 400 420 H 220 V 300", "direction": "UP" },
+    { "id": "b4", "path": "M 180 340 H 260 V 500", "direction": "DOWN" }
   ]
 }

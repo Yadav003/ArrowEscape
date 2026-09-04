@@ -1,24 +1,18 @@
-{"id":5,"name":"Level 5","board":{"width":1100,"height":1300},"paths":[
-{"id":"e1","path":"M80 120 H260 V220 H360","direction":"RIGHT"},
-{"id":"e2","path":"M420 80 V220 H520","direction":"DOWN"},
-{"id":"e3","path":"M600 120 H760 V240","direction":"RIGHT"},
-{"id":"e4","path":"M880 100 V220 H960","direction":"DOWN"},
-{"id":"e5","path":"M120 300 H260 V420","direction":"RIGHT"},
-{"id":"e6","path":"M420 260 V400 H520","direction":"DOWN"},
-{"id":"e7","path":"M620 300 H760 V420 H840","direction":"RIGHT"},
-{"id":"e8","path":"M920 280 V420 H980","direction":"DOWN"},
-{"id":"e9","path":"M80 520 H260 V640 H360","direction":"RIGHT"},
-{"id":"e10","path":"M420 480 V640 H520","direction":"DOWN"},
-{"id":"e11","path":"M620 540 H760 V660","direction":"RIGHT"},
-{"id":"e12","path":"M880 520 V660 H960","direction":"DOWN"},
-{"id":"e13","path":"M120 720 H300 V840","direction":"RIGHT"},
-{"id":"e14","path":"M440 700 V840 H540","direction":"DOWN"},
-{"id":"e15","path":"M640 740 H800 V860","direction":"RIGHT"},
-{"id":"e16","path":"M900 720 V860 H980","direction":"DOWN"},
-{"id":"e17","path":"M80 940 H260 V1060","direction":"RIGHT"},
-{"id":"e18","path":"M420 900 V1060 H520","direction":"DOWN"},
-{"id":"e19","path":"M620 960 H780 V1080 H840","direction":"RIGHT"},
-{"id":"e20","path":"M880 940 V1080 H960","direction":"UP"},
-{"id":"e21","path":"M160 1160 H320","direction":"LEFT"},
-{"id":"e22","path":"M520 1120 V1240","direction":"UP"}
-]}
+{
+  "id": 5,
+  "name": "Level 5 - Snake Labyrinth",
+  "board": { "width": 650, "height": 650 },
+  "paths": [
+    { "id": "e1", "path": "M 240 520 V 460 H 420 V 420 H 560", "direction": "RIGHT" },
+    { "id": "e2", "path": "M 480 520 H 360 V 480 H 120", "direction": "LEFT" },
+    { "id": "e3", "path": "M 140 440 H 280 V 360", "direction": "UP" },
+    { "id": "e4", "path": "M 440 380 H 320 V 300 H 560", "direction": "RIGHT" },
+    { "id": "e5", "path": "M 520 220 V 360 H 480 V 440 H 560", "direction": "RIGHT" },
+    { "id": "e6", "path": "M 400 120 H 520 V 180", "direction": "DOWN" },
+    { "id": "e7", "path": "M 200 120 H 340 V 220 H 440", "direction": "RIGHT" },
+    { "id": "e8", "path": "M 120 160 H 180 V 280 H 100", "direction": "LEFT" },
+    { "id": "e9", "path": "M 260 200 V 320 H 180", "direction": "LEFT" },
+    { "id": "e10", "path": "M 360 200 V 260 H 280", "direction": "LEFT" },
+    { "id": "e11", "path": "M 300 380 V 140 H 220 V 80", "direction": "UP" }
+  ]
+}
