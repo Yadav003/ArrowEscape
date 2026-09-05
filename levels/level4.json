@@ -13,16 +13,16 @@
     { "id": "h8", "path": "M 160 290 H 240 V 320 H 170", "color": "#FB5607" },
     { "id": "h9", "path": "M 270 290 H 570", "color": "#FF006E" },
     { "id": "h10", "path": "M 150 360 H 620 V 330 H 480", "color": "#00B4D8" },
-    { "id": "h11", "path": "M 180 400 H 580", "color": "#FFBE0B" },
-    { "id": "h12", "path": "M 140 440 H 620 V 410 H 220", "color": "#06D6A0" },
-    { "id": "h13", "path": "M 480 440 H 580", "color": "#FFBE0B" },
-    { "id": "h14", "path": "M 120 450 V 200 H 330 V 270 H 420", "color": "#00B4D8" },
-    { "id": "h15", "path": "M 150 480 H 410 V 510 H 350", "color": "#FFBE0B" },
-    { "id": "h16", "path": "M 210 540 V 490 H 300 V 560 H 370", "color": "#06D6A0" },
-    { "id": "h17", "path": "M 230 570 V 510 H 260 V 560", "color": "#FF006E" },
-    { "id": "h18", "path": "M 400 590 V 520 H 470", "color": "#FB5607" },
-    { "id": "h19", "path": "M 440 600 V 500 H 470 V 570 H 500", "color": "#8338EC" },
-    { "id": "h20", "path": "M 520 570 V 520 H 550", "color": "#FFBE0B" },
-    { "id": "h21", "path": "M 410 630 H 370 V 580 H 440 V 610", "color": "#FF006E" }
+    { "id": "h11", "path": "M 180 395 H 580", "color": "#FFBE0B" },
+    { "id": "h12", "path": "M 140 455 H 630 V 425 H 220", "color": "#06D6A0" },
+    { "id": "h13", "path": "M 480 485 H 580", "color": "#FFBE0B" },
+    { "id": "h14", "path": "M 120 515 V 200 H 330 V 270 H 420", "color": "#00B4D8" },
+    { "id": "h15", "path": "M 150 545 H 410 V 575 H 350", "color": "#FFBE0B" },
+    { "id": "h16", "path": "M 210 600 V 550 H 300 V 620 H 370", "color": "#06D6A0" },
+    { "id": "h17", "path": "M 230 630 V 570 H 260 V 620", "color": "#FF006E" },
+    { "id": "h18", "path": "M 400 650 V 580 H 470", "color": "#FB5607" },
+    { "id": "h19", "path": "M 440 660 V 560 H 470 V 630 H 500", "color": "#8338EC" },
+    { "id": "h20", "path": "M 520 630 V 580 H 550", "color": "#FFBE0B" },
+    { "id": "h21", "path": "M 410 690 H 370 V 640 H 440 V 670", "color": "#FF006E" }
   ]
 }

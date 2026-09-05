@@ -51,31 +51,31 @@
       name: "Level 3 - Labyrinth Maze",
       board: { width: 600, height: 640 },
       paths: [
-        { id: "top_bar_left", path: "M 200 110 H 50", color: "#4A5568" },
-        { id: "top_border_hook", path: "M 50 60 H 260 V 110 H 210", color: "#4A5568" },
-        { id: "top_exit_up", path: "M 220 200 V 230 H 260 V 150 H 350 V 100 H 310 V 40", color: "#4A5568" },
-        { id: "top_right_hook", path: "M 360 60 H 550 V 110 H 460", color: "#4A5568" },
-        { id: "upper_right_down", path: "M 410 140 V 180 H 440 V 220", color: "#4A5568" },
-        { id: "right_top_hook", path: "M 510 220 V 150 H 550 V 240", color: "#4A5568" },
-        { id: "right_col_up", path: "M 510 320 H 460 V 160", color: "#4A5568" },
-        { id: "u_turn_mid", path: "M 310 260 V 200 H 360 V 250", color: "#4A5568" },
-        { id: "left_col_up", path: "M 50 250 V 130", color: "#4A5568" },
-        { id: "left_inner_corner", path: "M 180 160 H 100 V 290 H 150", color: "#4A5568" },
-        { id: "left_small_hook", path: "M 190 290 V 240 H 140 V 210 H 190", color: "#4A5568" },
-        { id: "vert_mid_left_up", path: "M 220 360 V 250", color: "#4A5568" },
+        { id: "top_bar_left", path: "M 200 110 H 50", color: "#FFBE0B" },
+        { id: "top_border_hook", path: "M 50 60 H 260 V 110 H 210", color: "#FB5607" },
+        { id: "top_exit_up", path: "M 220 200 V 230 H 260 V 150 H 350 V 100 H 310 V 40", color: "#06D6A0" },
+        { id: "top_right_hook", path: "M 360 60 H 550 V 110 H 460", color: "#00B4D8" },
+        { id: "upper_right_down", path: "M 410 140 V 180 H 440 V 220", color: "#8338EC" },
+        { id: "right_top_hook", path: "M 510 220 V 150 H 550 V 240", color: "#FF006E" },
+        { id: "right_col_up", path: "M 510 320 H 460 V 160", color: "#3A86FF" },
+        { id: "u_turn_mid", path: "M 310 260 V 200 H 360 V 250", color: "#F77F00" },
+        { id: "left_col_up", path: "M 50 250 V 130", color: "#2EC4B6" },
+        { id: "left_inner_corner", path: "M 180 160 H 100 V 290 H 150", color: "#9D4EDD" },
+        { id: "left_small_hook", path: "M 190 290 V 240 H 140 V 210 H 190", color: "#FFBE0B" },
+        { id: "vert_mid_left_up", path: "M 220 360 V 250", color: "#FB5607" },
         { id: "red_arrow", path: "M 400 400 V 370 H 260 V 240", color: "#E63946" },
         { id: "green_arrow", path: "M 440 230 V 330 H 300", color: "#2A9D8F" },
-        { id: "left_mid_bar", path: "M 170 340 H 90", color: "#4A5568" },
-        { id: "left_col_mid_up", path: "M 50 460 V 320", color: "#4A5568" },
-        { id: "step_below_red", path: "M 370 410 H 220 V 460", color: "#4A5568" },
-        { id: "bot_mid_left", path: "M 390 450 H 220", color: "#4A5568" },
-        { id: "bot_right_snake", path: "M 440 490 H 310 V 530 H 400", color: "#4A5568" },
-        { id: "bot_right_v1", path: "M 450 370 V 550", color: "#4A5568" },
-        { id: "bot_right_v2", path: "M 490 580 V 390", color: "#4A5568" },
-        { id: "bot_right_v3", path: "M 530 360 V 590", color: "#4A5568" },
-        { id: "bot_left_loop", path: "M 100 480 V 400 H 180 V 540 H 350 V 580 H 420", color: "#4A5568" },
-        { id: "bot_left_up", path: "M 50 580 V 480", color: "#4A5568" },
-        { id: "bot_left_exit", path: "M 270 580 H 90", color: "#4A5568" }
+        { id: "left_mid_bar", path: "M 170 340 H 90", color: "#7209B7" },
+        { id: "left_col_mid_up", path: "M 50 460 V 320", color: "#06D6A0" },
+        { id: "step_below_red", path: "M 370 410 H 220 V 460", color: "#00B4D8" },
+        { id: "bot_mid_left", path: "M 390 450 H 220", color: "#FF006E" },
+        { id: "bot_right_snake", path: "M 440 490 H 310 V 530 H 400", color: "#3A86FF" },
+        { id: "bot_right_v1", path: "M 450 370 V 550", color: "#FFBE0B" },
+        { id: "bot_right_v2", path: "M 490 580 V 390", color: "#FB5607" },
+        { id: "bot_right_v3", path: "M 530 360 V 590", color: "#8338EC" },
+        { id: "bot_left_loop", path: "M 100 480 V 400 H 180 V 540 H 350 V 580 H 420", color: "#06D6A0" },
+        { id: "bot_left_up", path: "M 50 580 V 480", color: "#FF006E" },
+        { id: "bot_left_exit", path: "M 270 580 H 90", color: "#2EC4B6" }
       ]
     },
     4: {
@@ -93,17 +93,17 @@
         { id: "h8", path: "M 160 290 H 240 V 320 H 170", color: "#FB5607" },
         { id: "h9", path: "M 270 290 H 570", color: "#FF006E" },
         { id: "h10", path: "M 150 360 H 620 V 330 H 480", color: "#00B4D8" },
-        { id: "h11", path: "M 180 400 H 580", color: "#FFBE0B" },
-        { id: "h12", path: "M 140 440 H 620 V 410 H 220", color: "#06D6A0" },
-        { id: "h13", path: "M 480 440 H 580", color: "#FFBE0B" },
-        { id: "h14", path: "M 120 450 V 200 H 330 V 270 H 420", color: "#00B4D8" },
-        { id: "h15", path: "M 150 480 H 410 V 510 H 350", color: "#FFBE0B" },
-        { id: "h16", path: "M 210 540 V 490 H 300 V 560 H 370", color: "#06D6A0" },
-        { id: "h17", path: "M 230 570 V 510 H 260 V 560", color: "#FF006E" },
-        { id: "h18", path: "M 400 590 V 520 H 470", color: "#FB5607" },
-        { id: "h19", path: "M 440 600 V 500 H 470 V 570 H 500", color: "#8338EC" },
-        { id: "h20", path: "M 520 570 V 520 H 550", color: "#FFBE0B" },
-        { id: "h21", path: "M 410 630 H 370 V 580 H 440 V 610", color: "#FF006E" }
+        { id: "h11", path: "M 180 395 H 580", color: "#FFBE0B" },
+        { id: "h12", path: "M 140 455 H 630 V 425 H 220", color: "#06D6A0" },
+        { id: "h13", path: "M 480 485 H 580", color: "#FFBE0B" },
+        { id: "h14", path: "M 120 515 V 200 H 330 V 270 H 420", color: "#00B4D8" },
+        { id: "h15", path: "M 150 545 H 410 V 575 H 350", color: "#FFBE0B" },
+        { id: "h16", path: "M 210 600 V 550 H 300 V 620 H 370", color: "#06D6A0" },
+        { id: "h17", path: "M 230 630 V 570 H 260 V 620", color: "#FF006E" },
+        { id: "h18", path: "M 400 650 V 580 H 470", color: "#FB5607" },
+        { id: "h19", path: "M 440 660 V 560 H 470 V 630 H 500", color: "#8338EC" },
+        { id: "h20", path: "M 520 630 V 580 H 550", color: "#FFBE0B" },
+        { id: "h21", path: "M 410 690 H 370 V 640 H 440 V 670", color: "#FF006E" }
       ]
     },
     5: {
@@ -111,19 +111,19 @@
       name: "Level 5 - Snake Labyrinth",
       board: { width: 520, height: 600 },
       paths: [
-        { id: "u_cyan",         path: "M 120 80 V 140 H 80 V 70", color: "#00B4D8" },
+        { id: "u_cyan",         path: "M 120 90 V 140 H 80 V 70", color: "#00B4D8" },
         { id: "yellow_left_v",  path: "M 80 540 V 180 H 120 V 210", color: "#FFBE0B" },
-        { id: "pink_left_u",    path: "M 160 480 V 240 H 120 V 480", color: "#FF006E" },
+        { id: "pink_left_u",    path: "M 160 470 V 240 H 120 V 470", color: "#FF006E" },
         { id: "orange_top_s",   path: "M 220 170 V 110 H 300 V 75 H 155 V 190 H 190 V 235", color: "#FB5607" },
-        { id: "pink_center_h",  path: "M 340 135 H 260 V 260 H 225 V 225", color: "#FF006E" },
-        { id: "purple_top_box", path: "M 340 105 H 375 V 135 H 300 V 265 H 410 V 75 H 325", color: "#8338EC" },
+        { id: "pink_center_h",  path: "M 340 135 H 260 V 260 H 225 V 220", color: "#FF006E" },
+        { id: "purple_top_box", path: "M 340 105 H 380 V 135 H 300 V 265 H 410 V 75 H 325", color: "#8338EC" },
         { id: "green_inner_c",  path: "M 370 200 H 330 V 230 H 360", color: "#06D6A0" },
-        { id: "yellow_mid_bar", path: "M 190 340 V 285 H 420", color: "#FFBE0B" },
-        { id: "yellow_s_curve", path: "M 260 320 H 225 V 355 H 195 V 340 H 260", color: "#FFBE0B" },
-        { id: "orange_mid_s",   path: "M 390 380 H 300 V 345 H 380", color: "#FB5607" },
-        { id: "cyan_corner",    path: "M 265 350 V 380 H 180", color: "#00B4D8" },
-        { id: "purple_bot_u",   path: "M 410 420 H 300 V 385 H 345", color: "#8338EC" },
-        { id: "green_bot_u",    path: "M 410 450 H 120 V 415 H 270", color: "#06D6A0" }
+        { id: "yellow_mid_bar", path: "M 190 330 V 285 H 430", color: "#FFBE0B" },
+        { id: "yellow_hook",    path: "M 190 390 V 345 H 255", color: "#FFBE0B" },
+        { id: "cyan_corner",    path: "M 255 385 V 425 H 180", color: "#00B4D8" },
+        { id: "orange_mid_s",   path: "M 400 425 H 295 V 365 H 380", color: "#FB5607" },
+        { id: "purple_bot_u",   path: "M 400 475 H 295 V 435 H 345", color: "#8338EC" },
+        { id: "green_bot_u",    path: "M 410 525 H 120 V 475 H 265", color: "#06D6A0" }
       ]
     },
     6: {
@@ -208,12 +208,35 @@
     return d;
   }
 
+  function pointToSegmentDist(px, py, x1, y1, x2, y2) {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const l2 = dx * dx + dy * dy;
+    if (l2 === 0) return Math.hypot(px - x1, py - y1);
+    let t = ((px - x1) * dx + (py - y1) * dy) / l2;
+    t = Math.max(0, Math.min(1, t));
+    const projX = x1 + t * dx;
+    const projY = y1 + t * dy;
+    return Math.hypot(px - projX, py - projY);
+  }
+
+  function distanceToArrow(px, py, arrow) {
+    let minDist = Infinity;
+    for (const seg of arrow.getSegments()) {
+      const d = pointToSegmentDist(px, py, seg.p1.x, seg.p1.y, seg.p2.x, seg.p2.y);
+      if (d < minDist) minDist = d;
+    }
+    const headD = Math.hypot(px - arrow.headPoint.x, py - arrow.headPoint.y);
+    if (headD < minDist) minDist = headD;
+    return minDist;
+  }
+
   function getArrowheadData(head, direction) {
     const hx = head.x;
     const hy = head.y;
-    const L = 22; // Base length back from head
-    const W = 16; // Wing half-width (32px total, vs 15px stem)
-    const E = 8;  // Forward tip extension
+    const L = 15; // Base length back from head
+    const W = 10; // Wing half-width (20px total, vs 10px stem)
+    const E = 4;  // Forward tip extension
 
     let tip, wing1, wing2, stemEnd;
 
@@ -221,27 +244,27 @@
       tip = { x: hx + E, y: hy };
       wing1 = { x: hx - L, y: hy - W };
       wing2 = { x: hx - L, y: hy + W };
-      stemEnd = { x: hx - 10, y: hy };
+      stemEnd = { x: hx - 8, y: hy };
     } else if (direction === "LEFT") {
       tip = { x: hx - E, y: hy };
       wing1 = { x: hx + L, y: hy - W };
       wing2 = { x: hx + L, y: hy + W };
-      stemEnd = { x: hx + 10, y: hy };
+      stemEnd = { x: hx + 8, y: hy };
     } else if (direction === "DOWN") {
       tip = { x: hx, y: hy + E };
       wing1 = { x: hx - W, y: hy - L };
       wing2 = { x: hx + W, y: hy - L };
-      stemEnd = { x: hx, y: hy - 10 };
+      stemEnd = { x: hx, y: hy - 8 };
     } else if (direction === "UP") {
       tip = { x: hx, y: hy - E };
       wing1 = { x: hx - W, y: hy + L };
       wing2 = { x: hx + W, y: hy + L };
-      stemEnd = { x: hx, y: hy + 10 };
+      stemEnd = { x: hx, y: hy + 8 };
     } else {
       tip = { x: hx + E, y: hy };
       wing1 = { x: hx - L, y: hy - W };
       wing2 = { x: hx - L, y: hy + W };
-      stemEnd = { x: hx - 10, y: hy };
+      stemEnd = { x: hx - 8, y: hy };
     }
 
     return {
@@ -345,7 +368,7 @@
     constructor(board, arrows = []) {
       this.board = board;
       this.arrows = arrows;
-      this.tolerance = 14;
+      this.tolerance = 10;
     }
 
     setArrows(arrows = []) {
@@ -626,35 +649,35 @@
         const stemPts = [...arrow.points.slice(0, -1), headData.stemEnd];
         const stemPathD = polylineToPathD(stemPts);
 
-        // Path body (sleek rounded snake)
+        // Path body (sleek rounded snake, 10px stroke)
         const pathEl = document.createElementNS(this.ns, "path");
         pathEl.setAttribute("d", stemPathD);
         pathEl.setAttribute("fill", "none");
         pathEl.setAttribute("stroke", color);
-        pathEl.setAttribute("stroke-width", "15");
+        pathEl.setAttribute("stroke-width", "10");
         pathEl.setAttribute("stroke-linecap", "round");
         pathEl.setAttribute("stroke-linejoin", "round");
         pathEl.setAttribute("id", `arrow-path-${arrow.id}`);
         pathEl.classList.add("board-path");
         pathEl.dataset.arrowId = arrow.id;
 
-        // Integrated triangular head with distinct flaring wings
+        // Integrated triangular head (crisp, proportional wings)
         const headEl = document.createElementNS(this.ns, "polygon");
         headEl.setAttribute("points", headData.points);
         headEl.setAttribute("fill", color);
         headEl.setAttribute("stroke", color);
-        headEl.setAttribute("stroke-width", "2");
+        headEl.setAttribute("stroke-width", "1.5");
         headEl.setAttribute("stroke-linejoin", "round");
         headEl.setAttribute("id", `arrow-head-${arrow.id}`);
         headEl.classList.add("board-head");
         headEl.dataset.arrowId = arrow.id;
 
-        // Touch hit area (generous for easy tapping)
+        // Touch hit area (tightened to 18px to prevent overlapping adjacent paths)
         const hitEl = document.createElementNS(this.ns, "path");
         hitEl.setAttribute("d", arrow.path);
         hitEl.setAttribute("fill", "none");
         hitEl.setAttribute("stroke", "transparent");
-        hitEl.setAttribute("stroke-width", "46");
+        hitEl.setAttribute("stroke-width", "18");
         hitEl.setAttribute("stroke-linecap", "round");
         hitEl.setAttribute("stroke-linejoin", "round");
         hitEl.classList.add("hit-path");
@@ -756,7 +779,7 @@
           const uTail = s;
           const uHead = len + s;
 
-          const uStemEnd = Math.max(uTail + 1, uHead - 10);
+          const uStemEnd = Math.max(uTail + 1, uHead - 8);
           const slicedStem = slicePolyline(trajectory, uTail, uStemEnd);
           if (slicedStem.length >= 2) {
             pathEl.setAttribute("d", polylineToPathD(slicedStem));
@@ -810,7 +833,7 @@
           const factor = Math.sin(p * Math.PI * 1.5) * Math.exp(-p * 2.5);
           const s = Math.max(0, 14 * factor);
 
-          const uStemEnd = Math.max(s + 1, len + s - 10);
+          const uStemEnd = Math.max(s + 1, len + s - 8);
           const slicedStem = slicePolyline(trajectory, s, uStemEnd);
           if (slicedStem.length >= 2) {
             pathEl.setAttribute("d", polylineToPathD(slicedStem));
@@ -974,12 +997,46 @@
     const container = document.getElementById("svgContainer");
     renderer = new SVGRenderer(container);
 
-    // Pointer event delegation for arrows
+    // Pointer event delegation with nearest-arrow geometric resolution
     container.addEventListener("pointerdown", (e) => {
+      // 1. Direct hit on visible path or arrow head
+      if (e.target.classList.contains("board-path") || e.target.classList.contains("board-head")) {
+        const id = e.target.dataset.arrowId;
+        if (id) {
+          handleArrowClick(id);
+          return;
+        }
+      }
+
+      // 2. High-precision coordinate-based nearest-arrow targeting
+      const svg = container.querySelector("svg");
+      if (svg && activeArrows.length > 0) {
+        const pt = svg.createSVGPoint();
+        pt.x = e.clientX;
+        pt.y = e.clientY;
+        const svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
+
+        let closestArrow = null;
+        let closestDist = Infinity;
+        for (const arrow of activeArrows) {
+          if (!arrow.isActive || arrow.isRemoved) continue;
+          const d = distanceToArrow(svgP.x, svgP.y, arrow);
+          if (d < closestDist) {
+            closestDist = d;
+            closestArrow = arrow;
+          }
+        }
+        if (closestArrow && closestDist <= 22) {
+          handleArrowClick(closestArrow.id);
+          return;
+        }
+      }
+
+      // 3. Fallback to closest element with data-arrow-id
       const target = e.target.closest("[data-arrow-id]");
-      if (!target) return;
-      const arrowId = target.dataset.arrowId;
-      if (arrowId) handleArrowClick(arrowId);
+      if (target && target.dataset.arrowId) {
+        handleArrowClick(target.dataset.arrowId);
+      }
     });
 
     // Sound toggle
