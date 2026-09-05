@@ -148,6 +148,126 @@
         { id: "cyan_wave2",  path: "M 410 510 H 350 V 570 H 300 V 540", color: "#00B4D8" },
         { id: "cyan_r",      path: "M 380 570 H 440", color: "#00B4D8" }
       ]
+    },
+    7: {
+      id: 7,
+      name: "Level 7 - Serpentine Maze",
+      board: { width: 560, height: 660 },
+      paths: [
+        { id: "l7_purp_v", path: "M 80 140 V 45", color: "#8338EC" },
+        { id: "l7_green_snake", path: "M 115 110 H 155 V 70 H 215 V 110 H 245 V 45", color: "#06D6A0" },
+        { id: "l7_yellow_hook", path: "M 340 50 H 300 V 85 H 275 V 45", color: "#FFBE0B" },
+        { id: "l7_pink_u", path: "M 460 50 H 360 V 85 H 480", color: "#FF006E" },
+        { id: "l7_yellow_v", path: "M 415 185 V 105", color: "#FFBE0B" },
+        { id: "l7_cyan_c1", path: "M 465 115 H 445 V 140 H 475", color: "#00B4D8" },
+        { id: "l7_cyan_c2", path: "M 465 165 H 445 V 190 H 475", color: "#00B4D8" },
+        { id: "l7_orange_u", path: "M 465 245 H 415 V 215 H 475", color: "#FB5607" },
+        { id: "l7_yellow_wave", path: "M 80 190 H 115 V 145 H 215 V 185 H 250 V 155", color: "#FFBE0B" },
+        { id: "l7_cyan_inner", path: "M 145 185 H 130 V 160 H 165", color: "#00B4D8" },
+        { id: "l7_pink_loop", path: "M 345 160 V 130 H 310 V 195 H 355 V 155", color: "#FF006E" },
+        { id: "l7_purp_frame", path: "M 335 225 H 80 V 285 H 275 V 260 H 375 V 105 H 225", color: "#8338EC" },
+        { id: "l7_green_straight", path: "M 255 255 H 95", color: "#06D6A0" },
+        { id: "l7_cyan_outer_l", path: "M 320 625 H 80 V 315", color: "#00B4D8" },
+        { id: "l7_yellow_tall_u", path: "M 135 595 H 105 V 345 H 135 V 515", color: "#FFBE0B" },
+        { id: "l7_green_mid_hook", path: "M 170 335 H 195 V 390 H 235", color: "#06D6A0" },
+        { id: "l7_green_mid_h", path: "M 250 425 H 155", color: "#06D6A0" },
+        { id: "l7_orange_wavy", path: "M 450 320 H 345 V 365 H 315 V 330 H 280 V 365 H 245 V 325", color: "#FB5607" },
+        { id: "l7_pink_v_snake", path: "M 220 595 H 195 V 555 H 175 V 400", color: "#FF006E" },
+        { id: "l7_pink_small_v", path: "M 175 600 V 555", color: "#FF006E" },
+        { id: "l7_pink_s_snake", path: "M 295 530 H 260 V 600 H 295 V 500", color: "#FF006E" },
+        { id: "l7_orange_mid_u", path: "M 330 435 H 310 V 395 H 450 V 455 H 335 V 485 H 425", color: "#FB5607" },
+        { id: "l7_purp_mid_snake", path: "M 240 490 H 295 V 400 H 430 V 445 H 465 V 400", color: "#8338EC" },
+        { id: "l7_orange_bot_hook", path: "M 450 525 H 395 V 580 H 350 V 540 H 380 V 510", color: "#FB5607" },
+        { id: "l7_purp_bot_u", path: "M 330 575 V 625 H 465 V 560", color: "#8338EC" }
+      ]
+    },
+    8: {
+      id: 8,
+      name: "Level 8 - Dual Vortex",
+      board: { width: 560, height: 620 },
+      paths: [
+        { id: "l8_cyan_top_u", path: "M 100 50 H 440 V 90 H 270", color: "#00B4D8" },
+        { id: "l8_yellow_hook", path: "M 300 170 V 100 H 170", color: "#FFBE0B" },
+        { id: "l8_pink_s", path: "M 100 115 H 220 V 180 H 160", color: "#FF006E" },
+        { id: "l8_green_u", path: "M 100 310 V 190 H 140 V 270", color: "#06D6A0" },
+        { id: "l8_purp_wave", path: "M 285 240 V 320 H 235 V 240 H 180 V 285", color: "#8338EC" },
+        { id: "l8_orange_snake", path: "M 440 250 H 370 V 210 H 440 V 110 H 330 V 290 H 300 V 230", color: "#FB5607" },
+        { id: "l8_purp_hook", path: "M 370 340 H 435 V 290 H 395", color: "#8338EC" },
+        { id: "l8_yellow_short", path: "M 405 340 H 455", color: "#FFBE0B" },
+        { id: "l8_cyan_spiral", path: "M 140 480 H 175 V 450 H 115 V 535 H 215 V 415 H 260 V 500", color: "#00B4D8" },
+        { id: "l8_orange_bot", path: "M 435 480 H 370 V 450 H 435 V 535 H 335 V 415 H 300 V 500", color: "#FB5607" }
+      ]
+    },
+    9: {
+      id: 9,
+      name: "Level 9 - Gem Nexus",
+      board: { width: 680, height: 720 },
+      paths: [
+        { id: "l9_green_crown", path: "M 320 65 H 360 V 90 H 380 V 125 H 465", color: "#06D6A0" },
+        { id: "l9_purp_top_hook", path: "M 350 100 H 330 V 125 H 250", color: "#8338EC" },
+        { id: "l9_orange_top_bar", path: "M 520 100 V 125 H 210", color: "#FB5607" },
+        { id: "l9_cyan_top_bracket", path: "M 195 100 V 150 H 535", color: "#00B4D8" },
+        { id: "l9_orange_sat_up", path: "M 170 140 V 105", color: "#FB5607" },
+        { id: "l9_pink_sat_left", path: "M 215 195 V 170 H 120", color: "#FF006E" },
+        { id: "l9_cyan_sat_c", path: "M 115 260 H 90 V 290 H 115 V 265", color: "#00B4D8" },
+        { id: "l9_cyan_corner_up", path: "M 80 320 H 130 V 230 H 220 V 185", color: "#00B4D8" },
+        { id: "l9_green_u_left", path: "M 175 320 V 275 H 155 V 320", color: "#06D6A0" },
+        { id: "l9_purp_s_left", path: "M 235 305 H 195 V 330 H 225 V 355 H 175", color: "#8338EC" },
+        { id: "l9_orange_sat_bot_up", path: "M 120 480 V 420", color: "#FB5607" },
+        { id: "l9_cyan_sat_bot_down", path: "M 150 410 V 480", color: "#00B4D8" },
+        { id: "l9_cyan_inner_v", path: "M 265 375 V 230", color: "#00B4D8" },
+        { id: "l9_yellow_top_frame", path: "M 285 240 V 195 H 490 V 265", color: "#FFBE0B" },
+        { id: "l9_orange_inner_hook", path: "M 420 225 H 455 V 250 H 475 V 225", color: "#FB5607" },
+        { id: "l9_green_loop_mid", path: "M 320 280 H 300 V 240 H 380 V 285 H 350 V 265", color: "#06D6A0" },
+        { id: "l9_purp_long_s", path: "M 325 245 H 440 V 270 H 325 V 295 H 455", color: "#8338EC" },
+        { id: "l9_yellow_mid_bar", path: "M 385 320 H 275", color: "#FFBE0B" },
+        { id: "l9_cyan_mid_bar", path: "M 490 345 H 275", color: "#00B4D8" },
+        { id: "l9_cyan_sat_right", path: "M 545 225 H 585", color: "#00B4D8" },
+        { id: "l9_yellow_sat_hook", path: "M 545 325 V 250 H 600", color: "#FFBE0B" },
+        { id: "l9_yellow_sat_u", path: "M 575 305 H 560 V 275 H 590", color: "#FFBE0B" },
+        { id: "l9_purp_sat_down", path: "M 545 385 V 425", color: "#8338EC" },
+        { id: "l9_yellow_sat_right", path: "M 545 445 H 585", color: "#FFBE0B" },
+        { id: "l9_orange_sat_hook", path: "M 575 485 V 460 H 545 V 485", color: "#FB5607" },
+        { id: "l9_green_tall_up", path: "M 515 510 V 240", color: "#06D6A0" },
+        { id: "l9_orange_mid_v_down", path: "M 470 365 V 435", color: "#FB5607" },
+        { id: "l9_pink_spiral_left", path: "M 180 500 V 380 H 255 V 460 H 200 V 415 H 240", color: "#FF006E" },
+        { id: "l9_purp_mid_maze", path: "M 275 480 V 370 H 360 V 420 H 450 V 445 H 495", color: "#8338EC" },
+        { id: "l9_pink_inner_spiral", path: "M 310 460 H 340 V 405 H 315 V 440", color: "#FF006E" },
+        { id: "l9_pink_hook_mid", path: "M 450 455 H 350", color: "#FF006E" },
+        { id: "l9_cyan_bot_hook", path: "M 445 470 H 480 V 525", color: "#00B4D8" },
+        { id: "l9_yellow_bot_h1", path: "M 245 495 H 510", color: "#FFBE0B" },
+        { id: "l9_yellow_bot_h2", path: "M 270 520 H 345", color: "#FFBE0B" },
+        { id: "l9_pink_bot_snake", path: "M 280 545 H 360 V 520 H 420", color: "#FF006E" },
+        { id: "l9_purp_bot_hook", path: "M 380 565 H 405 V 620", color: "#8338EC" },
+        { id: "l9_cyan_bot_v_up", path: "M 425 605 V 545", color: "#00B4D8" },
+        { id: "l9_green_bot_hook", path: "M 430 535 H 455 V 585", color: "#06D6A0" },
+        { id: "l9_orange_bot_curve", path: "M 350 575 H 280 V 605 H 220", color: "#FB5607" }
+      ]
+    },
+    10: {
+      id: 10,
+      name: "Level 10 - Infinity Nexus",
+      board: { width: 600, height: 640 },
+      paths: [
+        { id: "l10_c_tl", path: "M 140 130 V 80 H 60", color: "#00B4D8" },
+        { id: "l10_c_tr", path: "M 460 130 V 80 H 540", color: "#FB5607" },
+        { id: "l10_c_bl", path: "M 140 510 V 560 H 60", color: "#FFBE0B" },
+        { id: "l10_c_br", path: "M 460 510 V 560 H 540", color: "#06D6A0" },
+        { id: "l10_top_purp", path: "M 180 80 H 420", color: "#8338EC" },
+        { id: "l10_bot_pink", path: "M 420 560 H 180", color: "#FF006E" },
+        { id: "l10_top_pink_u", path: "M 160 180 V 120 H 220 V 70", color: "#FF006E" },
+        { id: "l10_top_green_u", path: "M 440 180 V 120 H 380 V 70", color: "#06D6A0" },
+        { id: "l10_bot_cyan_u", path: "M 160 460 V 520 H 220 V 570", color: "#00B4D8" },
+        { id: "l10_bot_orange_u", path: "M 440 460 V 520 H 380 V 570", color: "#FB5607" },
+        { id: "l10_l_yellow_v", path: "M 90 420 V 200", color: "#FFBE0B" },
+        { id: "l10_r_purp_v", path: "M 510 220 V 440", color: "#8338EC" },
+        { id: "l10_mid_cyan_h", path: "M 120 230 H 480", color: "#00B4D8" },
+        { id: "l10_mid_yellow_h", path: "M 480 410 H 120", color: "#FFBE0B" },
+        { id: "l10_nexus_green", path: "M 280 280 H 180 V 360 H 280 V 315", color: "#06D6A0" },
+        { id: "l10_nexus_purp", path: "M 320 360 H 420 V 280 H 320 V 325", color: "#8338EC" },
+        { id: "l10_nexus_core_orange", path: "M 220 320 H 380", color: "#FB5607" },
+        { id: "l10_nexus_guard_pink", path: "M 300 250 V 190", color: "#FF006E" }
+      ]
     }
   };
 
@@ -1107,7 +1227,7 @@
       document.getElementById("levelCompleteOverlay").classList.add("hidden");
       audio.playClick();
       let nextLvl = currentLevelNum + 1;
-      if (nextLvl > 6) nextLvl = 1;
+      if (nextLvl > 10) nextLvl = 1;
       loadLevel(nextLvl);
     });
 
@@ -1115,10 +1235,10 @@
     const levelBadgeEl = document.getElementById("levelBadge");
     if (levelBadgeEl) {
       levelBadgeEl.style.cursor = "pointer";
-      levelBadgeEl.title = "Click to jump to next level (or press 1-6)";
+      levelBadgeEl.title = "Click to jump to next level (or press 1-9, 0 for 10)";
       levelBadgeEl.addEventListener("click", () => {
         audio.playClick();
-        loadLevel(currentLevelNum >= 6 ? 1 : currentLevelNum + 1);
+        loadLevel(currentLevelNum >= 10 ? 1 : currentLevelNum + 1);
       });
     }
 
@@ -1127,9 +1247,12 @@
       if (e.key === "r" || e.key === "R") loadLevel(currentLevelNum);
       if (e.key === "h" || e.key === "H") provideHint();
       if (e.key === "m" || e.key === "M") soundButton.click();
-      if (e.key >= "1" && e.key <= "6") {
+      if (e.key >= "1" && e.key <= "9") {
         audio.playClick();
         loadLevel(parseInt(e.key, 10));
+      } else if (e.key === "0") {
+        audio.playClick();
+        loadLevel(10);
       }
     });
 

@@ -1,0 +1,17 @@
+{
+  "id": 8,
+  "name": "Level 8 - Dual Vortex",
+  "board": { "width": 560, "height": 620 },
+  "paths": [
+    { "id": "l8_cyan_top_u", "path": "M 100 50 H 440 V 90 H 270", "color": "#00B4D8" },
+    { "id": "l8_yellow_hook", "path": "M 300 170 V 100 H 170", "color": "#FFBE0B" },
+    { "id": "l8_pink_s", "path": "M 100 115 H 220 V 180 H 160", "color": "#FF006E" },
+    { "id": "l8_green_u", "path": "M 100 310 V 190 H 140 V 270", "color": "#06D6A0" },
+    { "id": "l8_purp_wave", "path": "M 285 240 V 320 H 235 V 240 H 180 V 285", "color": "#8338EC" },
+    { "id": "l8_orange_snake", "path": "M 440 250 H 370 V 210 H 440 V 110 H 330 V 290 H 300 V 230", "color": "#FB5607" },
+    { "id": "l8_purp_hook", "path": "M 370 340 H 435 V 290 H 395", "color": "#8338EC" },
+    { "id": "l8_yellow_short", "path": "M 405 340 H 455", "color": "#FFBE0B" },
+    { "id": "l8_cyan_spiral", "path": "M 140 480 H 175 V 450 H 115 V 535 H 215 V 415 H 260 V 500", "color": "#00B4D8" },
+    { "id": "l8_orange_bot", "path": "M 435 480 H 370 V 450 H 435 V 535 H 335 V 415 H 300 V 500", "color": "#FB5607" }
+  ]
+}

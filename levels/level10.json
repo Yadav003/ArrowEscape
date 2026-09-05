@@ -1,0 +1,25 @@
+{
+  "id": 10,
+  "name": "Level 10 - Infinity Nexus",
+  "board": { "width": 600, "height": 640 },
+  "paths": [
+    { "id": "l10_c_tl", "path": "M 140 130 V 80 H 60", "color": "#00B4D8" },
+    { "id": "l10_c_tr", "path": "M 460 130 V 80 H 540", "color": "#FB5607" },
+    { "id": "l10_c_bl", "path": "M 140 510 V 560 H 60", "color": "#FFBE0B" },
+    { "id": "l10_c_br", "path": "M 460 510 V 560 H 540", "color": "#06D6A0" },
+    { "id": "l10_top_purp", "path": "M 180 80 H 420", "color": "#8338EC" },
+    { "id": "l10_bot_pink", "path": "M 420 560 H 180", "color": "#FF006E" },
+    { "id": "l10_top_pink_u", "path": "M 160 180 V 120 H 220 V 70", "color": "#FF006E" },
+    { "id": "l10_top_green_u", "path": "M 440 180 V 120 H 380 V 70", "color": "#06D6A0" },
+    { "id": "l10_bot_cyan_u", "path": "M 160 460 V 520 H 220 V 570", "color": "#00B4D8" },
+    { "id": "l10_bot_orange_u", "path": "M 440 460 V 520 H 380 V 570", "color": "#FB5607" },
+    { "id": "l10_l_yellow_v", "path": "M 90 420 V 200", "color": "#FFBE0B" },
+    { "id": "l10_r_purp_v", "path": "M 510 220 V 440", "color": "#8338EC" },
+    { "id": "l10_mid_cyan_h", "path": "M 120 230 H 480", "color": "#00B4D8" },
+    { "id": "l10_mid_yellow_h", "path": "M 480 410 H 120", "color": "#FFBE0B" },
+    { "id": "l10_nexus_green", "path": "M 280 280 H 180 V 360 H 280 V 315", "color": "#06D6A0" },
+    { "id": "l10_nexus_purp", "path": "M 320 360 H 420 V 280 H 320 V 325", "color": "#8338EC" },
+    { "id": "l10_nexus_core_orange", "path": "M 220 320 H 380", "color": "#FB5607" },
+    { "id": "l10_nexus_guard_pink", "path": "M 300 250 V 190", "color": "#FF006E" }
+  ]
+}

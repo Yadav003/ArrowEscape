@@ -1,0 +1,32 @@
+{
+  "id": 7,
+  "name": "Level 7 - Serpentine Maze",
+  "board": { "width": 560, "height": 660 },
+  "paths": [
+    { "id": "l7_purp_v", "path": "M 80 140 V 45", "color": "#8338EC" },
+    { "id": "l7_green_snake", "path": "M 115 110 H 155 V 70 H 215 V 110 H 245 V 45", "color": "#06D6A0" },
+    { "id": "l7_yellow_hook", "path": "M 340 50 H 300 V 85 H 275 V 45", "color": "#FFBE0B" },
+    { "id": "l7_pink_u", "path": "M 460 50 H 360 V 85 H 480", "color": "#FF006E" },
+    { "id": "l7_yellow_v", "path": "M 415 185 V 105", "color": "#FFBE0B" },
+    { "id": "l7_cyan_c1", "path": "M 465 115 H 445 V 140 H 475", "color": "#00B4D8" },
+    { "id": "l7_cyan_c2", "path": "M 465 165 H 445 V 190 H 475", "color": "#00B4D8" },
+    { "id": "l7_orange_u", "path": "M 465 245 H 415 V 215 H 475", "color": "#FB5607" },
+    { "id": "l7_yellow_wave", "path": "M 80 190 H 115 V 145 H 215 V 185 H 250 V 155", "color": "#FFBE0B" },
+    { "id": "l7_cyan_inner", "path": "M 145 185 H 130 V 160 H 165", "color": "#00B4D8" },
+    { "id": "l7_pink_loop", "path": "M 345 160 V 130 H 310 V 195 H 355 V 155", "color": "#FF006E" },
+    { "id": "l7_purp_frame", "path": "M 335 225 H 80 V 285 H 275 V 260 H 375 V 105 H 225", "color": "#8338EC" },
+    { "id": "l7_green_straight", "path": "M 255 255 H 95", "color": "#06D6A0" },
+    { "id": "l7_cyan_outer_l", "path": "M 320 625 H 80 V 315", "color": "#00B4D8" },
+    { "id": "l7_yellow_tall_u", "path": "M 135 595 H 105 V 345 H 135 V 515", "color": "#FFBE0B" },
+    { "id": "l7_green_mid_hook", "path": "M 170 335 H 195 V 390 H 235", "color": "#06D6A0" },
+    { "id": "l7_green_mid_h", "path": "M 250 425 H 155", "color": "#06D6A0" },
+    { "id": "l7_orange_wavy", "path": "M 450 320 H 345 V 365 H 315 V 330 H 280 V 365 H 245 V 325", "color": "#FB5607" },
+    { "id": "l7_pink_v_snake", "path": "M 220 595 H 195 V 555 H 175 V 400", "color": "#FF006E" },
+    { "id": "l7_pink_small_v", "path": "M 175 600 V 555", "color": "#FF006E" },
+    { "id": "l7_pink_s_snake", "path": "M 295 530 H 260 V 600 H 295 V 500", "color": "#FF006E" },
+    { "id": "l7_orange_mid_u", "path": "M 330 435 H 310 V 395 H 450 V 455 H 335 V 485 H 425", "color": "#FB5607" },
+    { "id": "l7_purp_mid_snake", "path": "M 240 490 H 295 V 400 H 430 V 445 H 465 V 400", "color": "#8338EC" },
+    { "id": "l7_orange_bot_hook", "path": "M 450 525 H 395 V 580 H 350 V 540 H 380 V 510", "color": "#FB5607" },
+    { "id": "l7_purp_bot_u", "path": "M 330 575 V 625 H 465 V 560", "color": "#8338EC" }
+  ]
+}
